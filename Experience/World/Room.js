@@ -394,7 +394,50 @@ export default class Room {
             this.selectedModel = this.intersectsObjects[ 0 ].object
 
             switch (this.selectedModel){
-                case this.project1: console.log("working")
+                case this.project1: 
+                console.log("working1")
+                this.actualRoom.children.forEach((child) => {
+    
+                    if (child.name === "Computer") {
+                        child.children[1].material = new THREE.MeshBasicMaterial({
+                            map: this.project11
+                        });
+                    }})
+                break
+                case this.project2: 
+                console.log("working2")
+                this.actualRoom.children.forEach((child) => {
+    
+                    if (child.name === "Computer") {
+                        child.children[1].material = new THREE.MeshBasicMaterial({
+                            map: this.project22
+                        });
+                    }})
+
+
+                break
+                case this.project3: 
+                this.actualRoom.children.forEach((child) => {
+    
+                    if (child.name === "Computer") {
+                        child.children[1].material = new THREE.MeshBasicMaterial({
+                            map: this.project33
+                        });
+                    }})
+                console.log("working3")
+                break
+                case this.project4: 
+                this.actualRoom.children.forEach((child) => {
+    
+                    if (child.name === "Computer") {
+                        child.children[1].material = new THREE.MeshBasicMaterial({
+                            map: this.project44
+                        });
+                    }})
+                console.log("working4")
+                break
+
+                case this.project5: console.log("working5")
                 // his.projectsHitBox,this.socialsHitBox)
                 break
 
@@ -713,6 +756,7 @@ break
         // texture.needsUpdate = true;
         // texture.offset.width = 50;
         // texture.offset.height = 100;
+
     
                     if (child.name === "Computer") {
                         child.children[1].material = new THREE.MeshBasicMaterial({
