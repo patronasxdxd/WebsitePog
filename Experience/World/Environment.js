@@ -26,12 +26,12 @@ export default class Environment {
 
 
        
-        this.ambientLight = new THREE.AmbientLight("#ffffff", 2);
+        this.ambientLight = new THREE.AmbientLight("#ffffff", 1);
 
 
 
         //maybe here
-        var directionalLight = new THREE.DirectionalLight( 0xffffff, 5 );
+        var directionalLight = new THREE.DirectionalLight( 0xffffff, 3 );
         // directionalLight.position.set(-9,2,0);
         this.scene.add(directionalLight);
     
@@ -39,7 +39,7 @@ export default class Environment {
         this.scene.add(this.ambientLight);
 
         this.sunLight.position.set(1.5, 7, 3);
-        this.scene.add(this.sunLight);
+        // this.scene.add(this.sunLight);
         
         
 
