@@ -368,6 +368,12 @@ export default class Room {
 
             this.projectsHitBox,
             this.socialsHitBox,
+            this.project1,
+            this.project2,
+            this.project3,
+            this.project4,
+            this.project5,
+            
         ]
         
      
@@ -379,17 +385,26 @@ export default class Room {
         console.log(this.objectsToTest,'ca')
         this.intersectsObjects = this.raycaster.intersectObjects(this.objectsToTest)
 
-        // console.log(intersectsObjects);
+
+        
+      
         if(this.intersectsObjects.length)
         {
-            this.selectedModel = this.intersectsObjects[ 0 ].object
             console.log("DawDWADADW");
-            console.log(this.selectedModel);
+            this.selectedModel = this.intersectsObjects[ 0 ].object
+
+            switch (this.selectedModel){
+                case this.project1: console.log("working")
+                // his.projectsHitBox,this.socialsHitBox)
+                break
+
+                case this.projectsHitBox:
+                    console.log("porject911")
+                    
+            
+
 
             const targetPosition = { x: -1, y: 3, z: 10 };
-
-
-
             const startingPosition = {
                 x: camera.perspectiveCamera.position.x,
                 y: camera.perspectiveCamera.position.y,
@@ -418,6 +433,47 @@ function render() {
   // Render your Three.js scene here
 }
 render();
+break
+
+                case this.socialsHitBox:
+                    console.log("socual911")
+                    break
+            }
+    
+            
+
+            
+
+
+//             const targetPosition = { x: -1, y: 3, z: 10 };
+//             const startingPosition = {
+//                 x: camera.perspectiveCamera.position.x,
+//                 y: camera.perspectiveCamera.position.y,
+//                 z: camera.perspectiveCamera.position.z
+//               };
+//         //     this.experience.camera.perspectiveCamera.position.z = 10;
+//         //  this.experience.camera.perspectiveCamera.position.y = 3;
+//         //  this.experience.camera.perspectiveCamera.position.x = -1;  
+//         const tween = new TWEEN.Tween(startingPosition)
+//          .to(targetPosition, 2000) // 2000 milliseconds duration
+//         .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
+//          .onUpdate(() => {
+//     // Update the camera position on every frame of the animation
+//          camera.perspectiveCamera.position.set(
+//          startingPosition.x,
+//         startingPosition.y,
+//         startingPosition.z
+//     );
+//   })
+//   .start(); // Start the animation
+
+// // Call TWEEN.update() on every frame of your render loop to update the Tween
+// function render() {
+//   requestAnimationFrame(render);
+//   TWEEN.update();
+//   // Render your Three.js scene here
+// }
+// render();
 
 
 
@@ -499,71 +555,42 @@ render();
 
 
         this.projectHitBoxes = new THREE.Group()
-        this.projectHitBoxGeometry = new THREE.PlaneGeometry( 0.29, 0.435 )
+        this.projectHitBoxGeometry = new THREE.PlaneGeometry( 0.35, 0.235 )
 
         this.project1 = new THREE.Mesh(
             this.projectHitBoxGeometry,
             this.hitBoxMaterial
         )
-        this.project1.position.set(0.72,-0.695,2.88)
+        this.project1.position.set(1.7,2.32,3.41)
 
         this.project2 = new THREE.Mesh(
             this.projectHitBoxGeometry,
             this.hitBoxMaterial
         )
-        this.project2.position.set(0.72 + 0.29,-0.695,2.88)
+        this.project2.position.set(1.7,2.00,3.41)
+
 
         this.project3 = new THREE.Mesh(
             this.projectHitBoxGeometry,
             this.hitBoxMaterial
         )
-        this.project3.position.set(0.72 + 0.29*2,-0.695,2.88)
+        this.project3.position.set(1.7,1.70,3.41)
 
         this.project4 = new THREE.Mesh(
             this.projectHitBoxGeometry,
             this.hitBoxMaterial
         )
-        this.project4.position.set(0.72 + 0.29*3,-0.695,2.88)
+        this.project4.position.set(1.7,1.40,3.41)
 
         this.project5 = new THREE.Mesh(
             this.projectHitBoxGeometry,
             this.hitBoxMaterial
         )
-        this.project5.position.set(0.72,-1.23,2.87)
+        this.project5.position.set(1.7,1.10,3.41)
 
-        this.project6 = new THREE.Mesh(
-            this.projectHitBoxGeometry,
-            this.hitBoxMaterial
-        )
-        this.project6.position.set(0.72 + 0.29,-1.23,2.87)
-
-        this.project7 = new THREE.Mesh(
-            this.projectHitBoxGeometry,
-            this.hitBoxMaterial
-        )
-        this.project7.position.set(0.72 + 0.28*2,-1.23,2.87)
-
-        this.project8 = new THREE.Mesh(
-            this.projectHitBoxGeometry,
-            this.hitBoxMaterial
-        )
-        this.project8.position.set(0.72 + 0.28*3,-1.23,2.87)
-
-        this.projectNavigateHitBoxGeometry = new THREE.PlaneGeometry( 0.47, 0.27 )
-
-        this.projectBack = new THREE.Mesh(
-            this.projectNavigateHitBoxGeometry,
-            this.hitBoxMaterial
-        )
-        this.projectBack.position.set(0.86,-1.66,2.85)
-
-        this.projectEnter = new THREE.Mesh(
-            this.projectNavigateHitBoxGeometry,
-            this.hitBoxMaterial
-        )
-        this.projectEnter.position.set(1.415,-1.66,2.85)
-
-        this.projectHitBoxes.add(this.project1, this.project2, this.project3, this.project4, this.project5, this.project6, this.project7, this.project8, this.projectBack, this.projectEnter)
+      
+    
+        this.projectHitBoxes.add(this.project1, this.project2, this.project3, this.project4, this.project5)
         
         this.scene.add(this.projectHitBoxes);
 
