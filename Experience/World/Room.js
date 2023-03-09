@@ -14,14 +14,24 @@ export default class Room {
         this.resources = this.experience.resources;
         // this.time = this.experience.time;
         this.room = this.resources.items.room;
+        this.raycaster = new THREE.Raycaster()
         console.log("here!");
         console.log(this.room);
         this.actualRoom = this.room.scene;
         this.tween = new TWEEN.Tween();
-
+        this.sizes = this.experience.sizes;
+        this.camera= this.experience.camera;
         console.log("acgi");
         console.log(this.actualRoom);
+        this.cursor = new THREE.Vector2()
+
         // this.roomChildren = {};
+
+        console.log(this.camera,"am")
+
+
+        
+        
 
 
       
@@ -44,8 +54,158 @@ export default class Room {
         });
     }
 
+    click(cursor,camera)
+    {
+
+        this.objectsToTest = [
+
+
+            this.projectsHitBox
+
+        ]
+        
+     
+        console.log(camera,'dawa');
+       
+        this.raycaster.setFromCamera(cursor, camera.perspectiveCamera)
+        console.log(this.raycaster);
+
+        console.log(this.objectsToTest,'ca')
+        this.intersectsObjects = this.raycaster.intersectObjects(this.objectsToTest)
+
+        // console.log(intersectsObjects);
+        if(this.intersectsObjects.length)
+        {
+            this.selectedModel = this.intersectsObjects[ 0 ].object
+            console.log("DawDWADADW");
+            console.log(this.selectedModel);
+
+    }
+}
+
 
     setModel() {
+
+
+     
+
+        this.touchedPoints = []
+
+
+        window.addEventListener('pointerdown', (event) =>
+        {
+            this.touchedPoints.push(event.pointerId)
+
+            this.cursorXMin = Math.abs((event.clientX / this.sizes.width * 2 - 1)*0.9)
+            this.cursorXMax = Math.abs((event.clientX / this.sizes.width * 2 - 1)*1.1)
+
+            this.cursorYMin = Math.abs((event.clientY / this.sizes.height * 2 - 1)*0.9)
+            this.cursorYMax = Math.abs((event.clientY / this.sizes.height * 2 - 1)*1.1)
+
+        })
+
+
+         window.addEventListener('pointerup', (event) =>
+            {
+                this.cursor.x = event.clientX / this.sizes.width * 2 - 1
+                this.cursor.y = - (event.clientY / this.sizes.height) * 2 + 1
+
+                this.absX = Math.abs(this.cursor.x)
+                this.absY = Math.abs(this.cursor.y)
+
+                if(this.touchedPoints.length === 1 && 
+                this.absX > this.cursorXMin && this.absX < this.cursorXMax &&
+                this.absY > this.cursorYMin && this.absY < this.cursorYMax) 
+
+                {
+                this.click(this.cursor,this.camera)
+
+                this.touchedPoints = []
+                }
+                else
+                {this.touchedPoints = []}
+            })
+
+        this.signHitBoxes = new THREE.Group()
+        this.hitBoxMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true} )
+
+
+        this.projectsHitBox = new THREE.Mesh(
+          
+            new THREE.BoxGeometry(1.285,0.286,0,65),
+            this.hitBoxMaterial
+        )
+
+        this.projectsHitBox.position.set(1.9,1.9,-3.6)
+
+
+        this.signHitBoxes.add(this.projectsHitBox)
+        // this.signHitBoxes.visible = false
+
+        this.scene.add(this.signHitBoxes);
+
+        // new THREE.BoxGeometry( 2.0, 1.9, -3.6 ),
+
+
+//         const width = 0.437 + 0.648;
+// const height = 0.143 + 0.14311708509;
+// const depth = 0.0035 +0.003;
+
+// // log the dimensions of the bounding box
+// console.log('Width:', width);
+// console.log('Height:', height);
+// console.log('Depth:', depth);
+
+//         // x
+        // : 
+        // 2.0103750228881836
+        // y
+        // : 
+        // 1.8874212503433228
+        // z
+        // : 
+        // -3.601562261581421
+
+       
+          
+          
+          
+
+
+        this.aboutMeBoxes = new THREE.Group()
+
+
+        this.aboutMeHitBoxGeometry = new THREE.PlaneGeometry( 0.3, 0.2 )
+
+        this.aboutMeBack = new THREE.Mesh(
+            new THREE.PlaneGeometry( 0.3, 0.2 ),
+            this.hitBoxMaterial
+        )
+        this.aboutMeBack.position.set(0.12, 4.58, 0.58)
+
+        this.aboutMeScreens = new THREE.Mesh(
+            this.aboutMeHitBoxGeometry,
+            this.hitBoxMaterial
+        )
+        this.aboutMeScreens.position.set(0.45, 4.58, 0.58)
+
+        this.skills = new THREE.Mesh(
+            this.aboutMeHitBoxGeometry,
+            this.hitBoxMaterial
+        )
+        this.skills.position.set(0.78, 4.58, 0.58)
+
+        this.experience = new THREE.Mesh(
+            new THREE.PlaneGeometry( 0.45, 0.2 ),
+            this.hitBoxMaterial
+        )
+        this.experience.position.set(1.15, 4.58, 0.58)
+        
+
+        this.aboutMeBoxes.add(this.aboutMeBack, this.aboutMeScreens, this.skills, this.experience)
+        this.aboutMeBoxes.visible = false
+
+        this.scene.add(this.aboutMeBoxes)
 
         
         this.actualRoom.children.forEach((child) => {

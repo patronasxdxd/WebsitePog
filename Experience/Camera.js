@@ -39,15 +39,15 @@ export default class Camera{
 
 
         this.scene.add(this.perspectiveCamera);
-                    // this.perspectiveCamera.position.x = 29;
-                    this.perspectiveCamera.position.y = 14;
-                    this.perspectiveCamera.position.z = 20;
-                    
-      
+                     this.perspectiveCamera.position.x = -15;
+                    this.perspectiveCamera.position.y = 5;
+                    this.perspectiveCamera.position.z = -25;
 
 
-        console.log("camera", this.perspectiveCamera)
+        
     }
+
+    
 
     setOrbitControls() {
         this.controls = new OrbitControls(this.perspectiveCamera, this.canvas);
