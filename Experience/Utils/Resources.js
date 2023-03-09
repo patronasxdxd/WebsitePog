@@ -11,7 +11,8 @@ export default class Sizes extends EventEmitter{
        this.experience = new Experience();
        this.renderer = this.experience.renderer;
        this.assets = assets;
-
+    //    this.rendererxd = this.experience.renderer.instance
+    //    console.log(this.experience.renderer,'dwadaw');
        this.items = {}
        this.queue = this.assets.length;
        this.loaded = 0;
@@ -27,6 +28,8 @@ export default class Sizes extends EventEmitter{
     this.loaders.dracoLoader = new DRACOLoader();
     this.loaders.dracoLoader.setDecoderPath("/draco/");
     this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader);
+
+
 }
 startLoading() {
     for (const asset of this.assets) {
@@ -56,7 +59,7 @@ startLoading() {
             this.videoTexture[asset.name].encoding = THREE.sRGBEncoding;
 
             this.singleAssetLoaded(asset, this.videoTexture[asset.name]);
-        }
+        } 
     }
 }
 singleAssetLoaded(asset, file) {

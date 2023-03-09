@@ -17,6 +17,7 @@ export default class Room {
         this.raycaster = new THREE.Raycaster()
         console.log("here!");
         console.log(this.room);
+        this.debug = this.experience.debug
         this.actualRoom = this.room.scene;
         this.tween = new TWEEN.Tween();
         this.sizes = this.experience.sizes;
@@ -24,10 +25,22 @@ export default class Room {
         console.log("acgi");
         console.log(this.actualRoom);
         this.cursor = new THREE.Vector2()
-
+        console.log(this.experience,"dawdw")
         // this.roomChildren = {};
+        this.textureSocial = new THREE.TextureLoader().load('/textures/web13.jpeg');
+        this.projectMenu = new THREE.TextureLoader().load('/textures/project1.png');
+        this.project11 = new THREE.TextureLoader().load('/textures/project2.png');
+        this.project22 = new THREE.TextureLoader().load('/textures/project3.png');
+        this.project33 = new THREE.TextureLoader().load('/textures/project4.png');
+        this.project44 = new THREE.TextureLoader().load('/textures/project5.png');
+
 
         console.log(this.camera,"am")
+
+         this.setLogic()
+          this.setProjectControls()
+          this.setMenuControls()
+
 
 
         
@@ -46,6 +59,299 @@ export default class Room {
         // this.setAnimation();
         // this.onMouseMove();
     }
+
+    sleep(ms) 
+    {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    bigScreenTransition(material,newTexture, duration, toDefault)
+    {
+        material.uniforms.uTexture2IsDefault.value = toDefault ? 1 : 0
+
+        material.uniforms.uTexture2.value = newTexture
+        gsap.to(material.uniforms.uProgress, {value:1,
+            duration: duration,
+            ease: "power1.inOut",
+            onComplete: () => {
+                material.uniforms.uTexture1IsDefault.value = toDefault ? 1 : 0 
+                material.uniforms.uTexture1.value = newTexture
+                material.uniforms.uProgress.value = 0
+                
+            }
+        })
+    }
+
+    setLogic()
+    {
+        this.logic = {}
+        this.logic.buttonsLocked = false
+        this.logic.mode = 'menu'
+
+        this.logic.lockButtons = async (lockDuration) =>
+        {
+            this.logic.buttonsLocked = true
+            await this.sleep(lockDuration)
+            this.logic.buttonsLocked = false
+        }
+    }
+
+
+
+    setProjectControls()
+    {
+        
+        this.projectControls = {}
+        this.projectControls.project1 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.sounds.playBloop()
+                this.logic.mode = 'projects1'
+                this.bigScreenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project1Texture,
+                    0.2
+                )
+            }
+        }
+        this.projectControls.project2 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.sounds.playBloop()
+                this.logic.mode = 'projects2'
+                this.bigScreenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project2Texture,
+                    0.2
+                )
+            }
+        }
+        this.projectControls.project3 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.sounds.playBloop()
+                this.logic.mode = 'projects3'
+                this.bigScreenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project3Texture,
+                    0.2
+                )
+            }
+        }
+        this.projectControls.project4 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.sounds.playBloop()
+                this.logic.mode = 'projects4'
+                this.bigScreenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project4Texture,
+                    0.2
+                )
+            }
+        }
+        this.projectControls.project5 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.sounds.playBloop()
+                this.logic.mode = 'projects5'
+                this.bigScreenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project5Texture,
+                    0.2
+                )
+            }
+        }
+        this.projectControls.project6 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.sounds.playBloop()
+                this.logic.mode = 'projects6'
+                this.bigScreenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project6Texture,
+                    0.2
+                )
+            }
+        }
+        this.projectControls.project7 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.sounds.playBloop()
+                this.logic.mode = 'projects7'
+                this.bigScreenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project7Texture,
+                    0.2
+                )
+            }
+        }
+        this.projectControls.project8 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.sounds.playBloop()
+                this.logic.mode = 'projects8'
+                this.bigScreenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project8Texture,
+                    0.2
+                )
+            }
+        }
+
+        // Go back
+        this.projectControls.projectBack = async () =>
+        {
+            if(this.logic.buttonsLocked === false && (this.logic.mode === 'projects0'))
+            {
+                this.sounds.playBloop()
+                this.logic.lockButtons(1500)
+                this.logic.mode = 'menu'
+                this.camControls.toDefault()
+                this.bigScreenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.vendingMachineDefaultTexture,
+                    0.4,
+                    true
+                )
+            }
+
+            if(this.logic.buttonsLocked === false && (this.logic.mode === 'projects1' || this.logic.mode === 'projects2' || this.logic.mode === 'projects3'|| this.logic.mode === 'projects4'|| this.logic.mode === 'projects5'|| this.logic.mode === 'projects6'|| this.logic.mode === 'projects7'|| this.logic.mode === 'projects8'))
+            {
+
+                console.log("12345678")
+           
+                this.logic.mode = 'projects0'
+                this.bigScreenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.vendingMachineMenuTexture,
+                    0.2
+                )
+            }
+            console.log('projectBack')
+        }
+
+        // Enter
+        this.projectControls.projectEnter = async () =>
+        {
+            console.log('projectEnter')
+        }
+    }
+
+
+
+
+    setMenuControls()
+    {
+        this.menuControls = {}
+        this.menuControls.projects = async (obj, color) =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
+            {
+                this.sounds.playClick()
+                this.logic.mode = 'projects0'
+                this.menuControls.buttonIndicator(obj, color)
+                this.camControls.toProjects()
+
+                this.bigScreenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.vendingMachineMenuTexture,
+                    0.2
+                )
+            }
+ 
+        }
+        this.menuControls.jZhou = async (obj, color) =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
+            {
+                this.sounds.playClick()
+                this.sounds.playWhoosh()
+                this.menuControls.buttonIndicator(obj, color)
+                this.camera.transitions.jZhou(1.5)
+            }
+        }
+        this.menuControls.articles = async (obj, color) =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
+            {
+                this.sounds.playClick()
+                this.menuControls.buttonIndicator(obj, color)
+                await this.sleep(250)
+                window.open('https://medium.com/@jesse-zhou', '_blank')
+            }
+        }
+        this.menuControls.aboutMe = async (obj, color) =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
+            {
+                this.sounds.playClick()
+                this.logic.mode = 'aboutMe'
+                this.menuControls.buttonIndicator(obj, color)
+                this.camControls.toAboutMe()
+
+                if(this.config.vertical === true)
+                {
+                    this.bigScreenTransition(
+                        this.materials.bigScreenMaterial,
+                        this.resources.items.bigScreenAboutMeMobileTexture,
+                        0.2,
+                    )
+                }
+                else
+                {
+                    this.bigScreenTransition(
+                        this.materials.bigScreenMaterial,
+                        this.resources.items.bigScreenAboutMeTexture,
+                        0.2,
+                    )
+                }
+
+
+
+            }
+        }
+        this.menuControls.credits = async (obj, color) =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
+            {
+                this.sounds.playClick()
+                this.logic.mode = 'creditsStart'
+                this.menuControls.buttonIndicator(obj, color)
+                this.camControls.toCredits()
+            }
+        }
+
+        this.menuControls.buttonIndicator = async (obj, color) =>
+        {
+            if (color === 'black') {
+                obj.material = this.ramenShop.materials.whiteSignMaterial
+                await this.sleep(200)
+                obj.material = this.ramenShop.materials.blackSignMaterial
+            }
+            if (color === 'white') {
+                obj.material = this.ramenShop.materials.blackSignMaterial
+                await this.sleep(200)
+                obj.material = this.ramenShop.materials.whiteSignMaterial
+            }
+        }
+    }
+
+
+
+
+
+
+
+
     onMouseMove() {
         window.addEventListener("mousemove", (e) => {
             this.rotation =
@@ -61,8 +367,7 @@ export default class Room {
 
 
             this.projectsHitBox,
-
-            this.socialsHitBox
+            this.socialsHitBox,
         ]
         
      
@@ -166,6 +471,10 @@ render();
         this.hitBoxMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true} )
 
 
+        
+               
+            
+
         //hitbox for pole 
         this.projectsHitBox = new THREE.Mesh(
           
@@ -189,6 +498,74 @@ render();
         this.scene.add(this.signHitBoxes);
 
 
+        this.projectHitBoxes = new THREE.Group()
+        this.projectHitBoxGeometry = new THREE.PlaneGeometry( 0.29, 0.435 )
+
+        this.project1 = new THREE.Mesh(
+            this.projectHitBoxGeometry,
+            this.hitBoxMaterial
+        )
+        this.project1.position.set(0.72,-0.695,2.88)
+
+        this.project2 = new THREE.Mesh(
+            this.projectHitBoxGeometry,
+            this.hitBoxMaterial
+        )
+        this.project2.position.set(0.72 + 0.29,-0.695,2.88)
+
+        this.project3 = new THREE.Mesh(
+            this.projectHitBoxGeometry,
+            this.hitBoxMaterial
+        )
+        this.project3.position.set(0.72 + 0.29*2,-0.695,2.88)
+
+        this.project4 = new THREE.Mesh(
+            this.projectHitBoxGeometry,
+            this.hitBoxMaterial
+        )
+        this.project4.position.set(0.72 + 0.29*3,-0.695,2.88)
+
+        this.project5 = new THREE.Mesh(
+            this.projectHitBoxGeometry,
+            this.hitBoxMaterial
+        )
+        this.project5.position.set(0.72,-1.23,2.87)
+
+        this.project6 = new THREE.Mesh(
+            this.projectHitBoxGeometry,
+            this.hitBoxMaterial
+        )
+        this.project6.position.set(0.72 + 0.29,-1.23,2.87)
+
+        this.project7 = new THREE.Mesh(
+            this.projectHitBoxGeometry,
+            this.hitBoxMaterial
+        )
+        this.project7.position.set(0.72 + 0.28*2,-1.23,2.87)
+
+        this.project8 = new THREE.Mesh(
+            this.projectHitBoxGeometry,
+            this.hitBoxMaterial
+        )
+        this.project8.position.set(0.72 + 0.28*3,-1.23,2.87)
+
+        this.projectNavigateHitBoxGeometry = new THREE.PlaneGeometry( 0.47, 0.27 )
+
+        this.projectBack = new THREE.Mesh(
+            this.projectNavigateHitBoxGeometry,
+            this.hitBoxMaterial
+        )
+        this.projectBack.position.set(0.86,-1.66,2.85)
+
+        this.projectEnter = new THREE.Mesh(
+            this.projectNavigateHitBoxGeometry,
+            this.hitBoxMaterial
+        )
+        this.projectEnter.position.set(1.415,-1.66,2.85)
+
+        this.projectHitBoxes.add(this.project1, this.project2, this.project3, this.project4, this.project5, this.project6, this.project7, this.project8, this.projectBack, this.projectEnter)
+        
+        this.scene.add(this.projectHitBoxes);
 
 
 
@@ -257,6 +634,8 @@ render();
 
         
         this.actualRoom.children.forEach((child) => {
+
+            
             child.castShadow = true;
             child.receiveShadow = true;
 
@@ -291,21 +670,81 @@ render();
                 });
             }
 
+            const projectDiv = document.getElementById("Socials");
+            projectDiv.addEventListener("click",function handleClick() {
+    
+    
+    
+    
+    
+                this.actualRoom.children.forEach((child) => {
+    
+    
+                    // texture.wrapS = THREE.RepeatWrapping;
+        // texture.wrapT = THREE.RepeatWrapping;
+        // texture.repeat.set(3, 3.1);
+        // texture.needsUpdate = true;
+        // texture.offset.width = 50;
+        // texture.offset.height = 100;
+    
+                    if (child.name === "Computer") {
+                        child.children[1].material = new THREE.MeshBasicMaterial({
+                            map: this.project33
+                        });
+                    }})
+    
+    //             const targetPosition = { x: 7, y: 2, z: 0 };
+    
+    
+    
+    
+    //             const startingPosition = {
+    //                 x: this.camera.perspectiveCamera.position.x,
+    //                 y: this.camera.perspectiveCamera.position.y,
+    //                 z: this.camera.perspectiveCamera.position.z
+    //               };
+    //         //     this.experience.camera.perspectiveCamera.position.z = 10;
+    //         //  this.experience.camera.perspectiveCamera.position.y = 3;
+    //         //  this.experience.camera.perspectiveCamera.position.x = -1;  
+    //         const tween = new TWEEN.Tween(startingPosition)
+    //          .to(targetPosition, 2000) // 2000 milliseconds duration
+    //         .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
+    //          .onUpdate(() => {
+    //     // Update the camera position on every frame of the animation
+    //          this.camera.perspectiveCamera.position.set(
+    //         startingPosition.x,
+    //         startingPosition.y,
+    //         startingPosition.z
+    //     );
+    //   })
+    //   .start(); // Start the animation
+    
+    // // Call TWEEN.update() on every frame of your render loop to update the Tween
+    // function render() {
+    //   requestAnimationFrame(render);
+    //   TWEEN.update();
+    //   // Render your Three.js scene here
+    // }
+    // render();
+            
+              
+            }.bind(this));
+
 
 
             
             const texture = new THREE.TextureLoader().load('/textures/web13.jpeg');
-            texture.wrapS = THREE.RepeatWrapping;
-texture.wrapT = THREE.RepeatWrapping;
-texture.repeat.set(3, 3.1);
-texture.needsUpdate = true;
-texture.offset.width = 50;
-texture.offset.height = 100;
+            this.textureSocial.wrapS = THREE.RepeatWrapping;
+            this.textureSocial.wrapT = THREE.RepeatWrapping;
+            this.textureSocial.repeat.set(3, 3.1);
+            this.textureSocial.needsUpdate = true;
+            this.textureSocial.offset.width = 50;
+            this.textureSocial.offset.height = 100;
             if (child.name === "Cube148") {
     
                 //material038
                 child.material = new THREE.MeshBasicMaterial({
-                    map: texture,
+                    map: this.textureSocial,
                 });
             }
 
@@ -367,45 +806,7 @@ render();
 
 
 
-        const projectDiv = document.getElementById("Socials");
-        projectDiv.addEventListener("click",function handleClick() {
-
-            const targetPosition = { x: 7, y: 2, z: 0 };
-
-
-
-
-            const startingPosition = {
-                x: this.camera.perspectiveCamera.position.x,
-                y: this.camera.perspectiveCamera.position.y,
-                z: this.camera.perspectiveCamera.position.z
-              };
-        //     this.experience.camera.perspectiveCamera.position.z = 10;
-        //  this.experience.camera.perspectiveCamera.position.y = 3;
-        //  this.experience.camera.perspectiveCamera.position.x = -1;  
-        const tween = new TWEEN.Tween(startingPosition)
-         .to(targetPosition, 2000) // 2000 milliseconds duration
-        .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
-         .onUpdate(() => {
-    // Update the camera position on every frame of the animation
-         this.camera.perspectiveCamera.position.set(
-        startingPosition.x,
-        startingPosition.y,
-        startingPosition.z
-    );
-  })
-  .start(); // Start the animation
-
-// Call TWEEN.update() on every frame of your render loop to update the Tween
-function render() {
-  requestAnimationFrame(render);
-  TWEEN.update();
-  // Render your Three.js scene here
-}
-render();
-        
-          
-        }.bind(this));
+      
 
         //otherwise this is going to be this.html element from getlementbyid
 
