@@ -60,8 +60,9 @@ export default class Room {
         this.objectsToTest = [
 
 
-            this.projectsHitBox
+            this.projectsHitBox,
 
+            this.socialsHitBox
         ]
         
      
@@ -79,6 +80,41 @@ export default class Room {
             this.selectedModel = this.intersectsObjects[ 0 ].object
             console.log("DawDWADADW");
             console.log(this.selectedModel);
+
+            const targetPosition = { x: -1, y: 3, z: 10 };
+
+
+
+            const startingPosition = {
+                x: camera.perspectiveCamera.position.x,
+                y: camera.perspectiveCamera.position.y,
+                z: camera.perspectiveCamera.position.z
+              };
+        //     this.experience.camera.perspectiveCamera.position.z = 10;
+        //  this.experience.camera.perspectiveCamera.position.y = 3;
+        //  this.experience.camera.perspectiveCamera.position.x = -1;  
+        const tween = new TWEEN.Tween(startingPosition)
+         .to(targetPosition, 2000) // 2000 milliseconds duration
+        .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
+         .onUpdate(() => {
+    // Update the camera position on every frame of the animation
+         camera.perspectiveCamera.position.set(
+         startingPosition.x,
+        startingPosition.y,
+        startingPosition.z
+    );
+  })
+  .start(); // Start the animation
+
+// Call TWEEN.update() on every frame of your render loop to update the Tween
+function render() {
+  requestAnimationFrame(render);
+  TWEEN.update();
+  // Render your Three.js scene here
+}
+render();
+
+
 
     }
 }
@@ -130,6 +166,7 @@ export default class Room {
         this.hitBoxMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true} )
 
 
+        //hitbox for pole 
         this.projectsHitBox = new THREE.Mesh(
           
             new THREE.BoxGeometry(1.285,0.286,0,65),
@@ -138,11 +175,22 @@ export default class Room {
 
         this.projectsHitBox.position.set(1.9,1.9,-3.6)
 
+        this.socialsHitBox = new THREE.Mesh(
+          
+            new THREE.BoxGeometry(0.7,0.31,0,65),
+            this.hitBoxMaterial
+        )
 
-        this.signHitBoxes.add(this.projectsHitBox)
+        this.socialsHitBox.position.set(2.3,1.35,-3.6)
+
+
+        this.signHitBoxes.add(this.projectsHitBox,this.socialsHitBox)
         // this.signHitBoxes.visible = false
-
         this.scene.add(this.signHitBoxes);
+
+
+
+
 
         // new THREE.BoxGeometry( 2.0, 1.9, -3.6 ),
 
@@ -284,9 +332,9 @@ texture.offset.height = 100;
             const targetPosition = { x: -1, y: 3, z: 10 };
 
             const startingPosition = {
-                x: this.experience.camera.perspectiveCamera.position.x,
-                y: this.experience.camera.perspectiveCamera.position.y,
-                z: this.experience.camera.perspectiveCamera.position.z
+                x: this.camera.perspectiveCamera.position.x,
+                y: this.camera.perspectiveCamera.position.y,
+                z: this.camera.perspectiveCamera.position.z
               };
         //     this.experience.camera.perspectiveCamera.position.z = 10;
         //  this.experience.camera.perspectiveCamera.position.y = 3;
@@ -296,7 +344,7 @@ texture.offset.height = 100;
         .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
          .onUpdate(() => {
     // Update the camera position on every frame of the animation
-         this.experience.camera.perspectiveCamera.position.set(
+         this.camera.perspectiveCamera.position.set(
         startingPosition.x,
         startingPosition.y,
         startingPosition.z
@@ -324,10 +372,13 @@ render();
 
             const targetPosition = { x: 7, y: 2, z: 0 };
 
+
+
+
             const startingPosition = {
-                x: this.experience.camera.perspectiveCamera.position.x,
-                y: this.experience.camera.perspectiveCamera.position.y,
-                z: this.experience.camera.perspectiveCamera.position.z
+                x: this.camera.perspectiveCamera.position.x,
+                y: this.camera.perspectiveCamera.position.y,
+                z: this.camera.perspectiveCamera.position.z
               };
         //     this.experience.camera.perspectiveCamera.position.z = 10;
         //  this.experience.camera.perspectiveCamera.position.y = 3;
@@ -337,7 +388,7 @@ render();
         .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
          .onUpdate(() => {
     // Update the camera position on every frame of the animation
-         this.experience.camera.perspectiveCamera.position.set(
+         this.camera.perspectiveCamera.position.set(
         startingPosition.x,
         startingPosition.y,
         startingPosition.z
