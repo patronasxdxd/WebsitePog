@@ -44,30 +44,9 @@ export default class Room {
         this.project44.wrapS = THREE.RepeatWrapping;
         this.project44.repeat.x = -1;
 
+            this.setLogic()
+            this.setModel();
 
-        console.log(this.camera,"am")
-
-         this.setLogic()
-          this.setProjectControls()
-          this.setMenuControls()
-
-
-
-        
-        
-
-
-      
-
-        // this.lerp = {
-        //     current: 0,
-        //     target: 0,
-        //     ease: 0.1,
-        // };
-
-        this.setModel();
-        // this.setAnimation();
-        // this.onMouseMove();
     }
 
     sleep(ms) 
@@ -108,256 +87,7 @@ export default class Room {
 
 
 
-    setProjectControls()
-    {
-        
-        this.projectControls = {}
-        this.projectControls.project1 = async () =>
-        {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
-            {
-                this.sounds.playBloop()
-                this.logic.mode = 'projects1'
-                this.bigScreenTransition(
-                    this.materials.vendingMachineScreenMaterial,
-                    this.resources.items.project1Texture,
-                    0.2
-                )
-            }
-        }
-        this.projectControls.project2 = async () =>
-        {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
-            {
-                this.sounds.playBloop()
-                this.logic.mode = 'projects2'
-                this.bigScreenTransition(
-                    this.materials.vendingMachineScreenMaterial,
-                    this.resources.items.project2Texture,
-                    0.2
-                )
-            }
-        }
-        this.projectControls.project3 = async () =>
-        {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
-            {
-                this.sounds.playBloop()
-                this.logic.mode = 'projects3'
-                this.bigScreenTransition(
-                    this.materials.vendingMachineScreenMaterial,
-                    this.resources.items.project3Texture,
-                    0.2
-                )
-            }
-        }
-        this.projectControls.project4 = async () =>
-        {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
-            {
-                this.sounds.playBloop()
-                this.logic.mode = 'projects4'
-                this.bigScreenTransition(
-                    this.materials.vendingMachineScreenMaterial,
-                    this.resources.items.project4Texture,
-                    0.2
-                )
-            }
-        }
-        this.projectControls.project5 = async () =>
-        {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
-            {
-                this.sounds.playBloop()
-                this.logic.mode = 'projects5'
-                this.bigScreenTransition(
-                    this.materials.vendingMachineScreenMaterial,
-                    this.resources.items.project5Texture,
-                    0.2
-                )
-            }
-        }
-        this.projectControls.project6 = async () =>
-        {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
-            {
-                this.sounds.playBloop()
-                this.logic.mode = 'projects6'
-                this.bigScreenTransition(
-                    this.materials.vendingMachineScreenMaterial,
-                    this.resources.items.project6Texture,
-                    0.2
-                )
-            }
-        }
-        this.projectControls.project7 = async () =>
-        {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
-            {
-                this.sounds.playBloop()
-                this.logic.mode = 'projects7'
-                this.bigScreenTransition(
-                    this.materials.vendingMachineScreenMaterial,
-                    this.resources.items.project7Texture,
-                    0.2
-                )
-            }
-        }
-        this.projectControls.project8 = async () =>
-        {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
-            {
-                this.sounds.playBloop()
-                this.logic.mode = 'projects8'
-                this.bigScreenTransition(
-                    this.materials.vendingMachineScreenMaterial,
-                    this.resources.items.project8Texture,
-                    0.2
-                )
-            }
-        }
-
-        // Go back
-        this.projectControls.projectBack = async () =>
-        {
-            if(this.logic.buttonsLocked === false && (this.logic.mode === 'projects0'))
-            {
-                this.sounds.playBloop()
-                this.logic.lockButtons(1500)
-                this.logic.mode = 'menu'
-                this.camControls.toDefault()
-                this.bigScreenTransition(
-                    this.materials.vendingMachineScreenMaterial,
-                    this.resources.items.vendingMachineDefaultTexture,
-                    0.4,
-                    true
-                )
-            }
-
-            if(this.logic.buttonsLocked === false && (this.logic.mode === 'projects1' || this.logic.mode === 'projects2' || this.logic.mode === 'projects3'|| this.logic.mode === 'projects4'|| this.logic.mode === 'projects5'|| this.logic.mode === 'projects6'|| this.logic.mode === 'projects7'|| this.logic.mode === 'projects8'))
-            {
-
-                console.log("12345678")
-           
-                this.logic.mode = 'projects0'
-                this.bigScreenTransition(
-                    this.materials.vendingMachineScreenMaterial,
-                    this.resources.items.vendingMachineMenuTexture,
-                    0.2
-                )
-            }
-            console.log('projectBack')
-        }
-
-        // Enter
-        this.projectControls.projectEnter = async () =>
-        {
-            console.log('projectEnter')
-        }
-    }
-
-
-
-
-    setMenuControls()
-    {
-        this.menuControls = {}
-        this.menuControls.projects = async (obj, color) =>
-        {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
-            {
-                this.sounds.playClick()
-                this.logic.mode = 'projects0'
-                this.menuControls.buttonIndicator(obj, color)
-                this.camControls.toProjects()
-
-                this.bigScreenTransition(
-                    this.materials.vendingMachineScreenMaterial,
-                    this.resources.items.vendingMachineMenuTexture,
-                    0.2
-                )
-            }
- 
-        }
-        this.menuControls.jZhou = async (obj, color) =>
-        {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
-            {
-                this.sounds.playClick()
-                this.sounds.playWhoosh()
-                this.menuControls.buttonIndicator(obj, color)
-                this.camera.transitions.jZhou(1.5)
-            }
-        }
-        this.menuControls.articles = async (obj, color) =>
-        {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
-            {
-                this.sounds.playClick()
-                this.menuControls.buttonIndicator(obj, color)
-                await this.sleep(250)
-                window.open('https://medium.com/@jesse-zhou', '_blank')
-            }
-        }
-        this.menuControls.aboutMe = async (obj, color) =>
-        {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
-            {
-                this.sounds.playClick()
-                this.logic.mode = 'aboutMe'
-                this.menuControls.buttonIndicator(obj, color)
-                this.camControls.toAboutMe()
-
-                if(this.config.vertical === true)
-                {
-                    this.bigScreenTransition(
-                        this.materials.bigScreenMaterial,
-                        this.resources.items.bigScreenAboutMeMobileTexture,
-                        0.2,
-                    )
-                }
-                else
-                {
-                    this.bigScreenTransition(
-                        this.materials.bigScreenMaterial,
-                        this.resources.items.bigScreenAboutMeTexture,
-                        0.2,
-                    )
-                }
-
-
-
-            }
-        }
-        this.menuControls.credits = async (obj, color) =>
-        {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
-            {
-                this.sounds.playClick()
-                this.logic.mode = 'creditsStart'
-                this.menuControls.buttonIndicator(obj, color)
-                this.camControls.toCredits()
-            }
-        }
-
-        this.menuControls.buttonIndicator = async (obj, color) =>
-        {
-            if (color === 'black') {
-                obj.material = this.ramenShop.materials.whiteSignMaterial
-                await this.sleep(200)
-                obj.material = this.ramenShop.materials.blackSignMaterial
-            }
-            if (color === 'white') {
-                obj.material = this.ramenShop.materials.blackSignMaterial
-                await this.sleep(200)
-                obj.material = this.ramenShop.materials.whiteSignMaterial
-            }
-        }
-    }
-
-
-
-
+  
 
 
 
@@ -387,17 +117,13 @@ export default class Room {
         ]
         
      
-        console.log(camera,'dawa');
        
-        this.raycaster.setFromCamera(cursor, camera.perspectiveCamera)
-        console.log(this.raycaster);
-
-        console.log(this.objectsToTest,'ca')
+        this.raycaster.setFromCamera(cursor, camera.perspectiveCamera)    
         this.intersectsObjects = this.raycaster.intersectObjects(this.objectsToTest)
 
 
         
-      
+
         if(this.intersectsObjects.length)
         {
             console.log("DawDWADADW");
@@ -576,11 +302,7 @@ break
 
     setModel() {
 
-
-     
-
         this.touchedPoints = []
-
 
         window.addEventListener('pointerdown', (event) =>
         {
@@ -633,16 +355,25 @@ break
 
         this.projectsHitBox.position.set(1.9,1.9,-3.6)
 
+        this.skillsHitBox = new THREE.Mesh(
+          
+            new THREE.BoxGeometry(0.7,0.31,0,65),
+            this.hitBoxMaterial
+        )
+
+        this.skillsHitBox.position.set(2.3,1.35,-3.6)
+
+
         this.socialsHitBox = new THREE.Mesh(
           
             new THREE.BoxGeometry(0.7,0.31,0,65),
             this.hitBoxMaterial
         )
 
-        this.socialsHitBox.position.set(2.3,1.35,-3.6)
+        this.socialsHitBox.position.set(2.4,0.72,-3.6)
 
 
-        this.signHitBoxes.add(this.projectsHitBox,this.socialsHitBox)
+        this.signHitBoxes.add(this.projectsHitBox,this.skillsHitBox,this.socialsHitBox)
         // this.signHitBoxes.visible = false
         this.scene.add(this.signHitBoxes);
 
@@ -996,14 +727,6 @@ render();
     resize() {}
 
     update() {
-        // this.lerp.current = GSAP.utils.interpolate(
-        //     this.lerp.current,
-        //     this.lerp.target,
-        //     this.lerp.ease
-        // );
-
         this.actualRoom.rotation.y += 10;
-
-        // this.mixer.update(this.time.delta * 0.0009);
     }
 }
