@@ -27,7 +27,7 @@ export default class Room {
         this.cursor = new THREE.Vector2()
         console.log(this.experience,"dawdw")
         // this.roomChildren = {};
-        this.textureSocial = new THREE.TextureLoader().load('/textures/web13.jpeg');
+        this.textureSocial = new THREE.TextureLoader().load('/textures/phonebg.webp');
         this.projectMenu = new THREE.TextureLoader().load('/textures/project1.png');
         this.projectMenu.wrapS = THREE.RepeatWrapping;
         this.projectMenu.repeat.x = -1;
@@ -48,6 +48,9 @@ export default class Room {
             this.setModel();
 
     }
+
+
+
 
     sleep(ms) 
     {
@@ -108,6 +111,8 @@ export default class Room {
 
             this.projectsHitBox,
             this.socialsHitBox,
+            this.skillsHitBox,
+            this.mediabuttonsHitBoxes,
             this.project1,
             this.project2,
             this.project3,
@@ -257,47 +262,52 @@ break
             
               
                     break
+                    case this.skillsHitBox:
+
+                        
+                            const targetPositionSocial3 = { x: 10, y: 16, z: -5 };
+                        
+                            const startingPosition3 = {
+                                x: this.camera.perspectiveCamera.position.x,
+                                y: this.camera.perspectiveCamera.position.y,
+                                z: this.camera.perspectiveCamera.position.z
+                              };
+                      
+                        const tween3 = new TWEEN.Tween(startingPosition3)
+                         .to(targetPositionSocial3, 2000) // 2000 milliseconds duration
+                        .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
+                         .onUpdate(() => {
+                    
+                    
+                    // Update the camera position on every frame of the animation
+                         this.camera.perspectiveCamera.position.set(
+                        startingPosition3.x,
+                        startingPosition3.y,
+                        startingPosition3.z
+                    );
+                    })
+                    .start(); // Start the animation
+                    
+                    // Call TWEEN.update() on every frame of your render loop to update the Tween
+                    
+                    render();
+                    // console.log()
+                    
+
+
+
+                    break;
+
+
+
             }
     
-            
-
-            
-
-
-//             const targetPosition = { x: -1, y: 3, z: 10 };
-//             const startingPosition = {
-//                 x: camera.perspectiveCamera.position.x,
-//                 y: camera.perspectiveCamera.position.y,
-//                 z: camera.perspectiveCamera.position.z
-//               };
-//         //     this.experience.camera.perspectiveCamera.position.z = 10;
-//         //  this.experience.camera.perspectiveCamera.position.y = 3;
-//         //  this.experience.camera.perspectiveCamera.position.x = -1;  
-//         const tween = new TWEEN.Tween(startingPosition)
-//          .to(targetPosition, 2000) // 2000 milliseconds duration
-//         .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
-//          .onUpdate(() => {
-//     // Update the camera position on every frame of the animation
-//          camera.perspectiveCamera.position.set(
-//          startingPosition.x,
-//         startingPosition.y,
-//         startingPosition.z
-//     );
-//   })
-//   .start(); // Start the animation
-
-// // Call TWEEN.update() on every frame of your render loop to update the Tween
-// function render() {
-//   requestAnimationFrame(render);
-//   TWEEN.update();
-//   // Render your Three.js scene here
-// }
-// render();
-
-
-
+        
     }
 }
+
+
+
 
 
     setModel() {
@@ -418,36 +428,6 @@ break
         
         this.scene.add(this.projectHitBoxes);
 
-
-
-        // new THREE.BoxGeometry( 2.0, 1.9, -3.6 ),
-
-
-//         const width = 0.437 + 0.648;
-// const height = 0.143 + 0.14311708509;
-// const depth = 0.0035 +0.003;
-
-// // log the dimensions of the bounding box
-// console.log('Width:', width);
-// console.log('Height:', height);
-// console.log('Depth:', depth);
-
-//         // x
-        // : 
-        // 2.0103750228881836
-        // y
-        // : 
-        // 1.8874212503433228
-        // z
-        // : 
-        // -3.601562261581421
-
-       
-          
-          
-          
-
-
         this.aboutMeBoxes = new THREE.Group()
 
 
@@ -481,7 +461,71 @@ break
         this.aboutMeBoxes.add(this.aboutMeBack, this.aboutMeScreens, this.skills, this.experience)
         this.aboutMeBoxes.visible = false
 
-        this.scene.add(this.aboutMeBoxes)
+
+        this.mediabuttonsHitBoxes = new THREE.Group()
+        this.projectHitBoxGeometry2 = new THREE.PlaneGeometry( 0.37, 0.335 )
+        
+        this.media1 = new THREE.Mesh(
+            this.projectHitBoxGeometry2,
+            this.hitBoxMaterial
+        )
+
+        this.media1.rotation.y = Math.PI / 2;
+        this.media1.position.set(2.85,1.25,-0.55)
+
+        this.media2 = new THREE.Mesh(
+            this.projectHitBoxGeometry2,
+            this.hitBoxMaterial
+        )
+
+        this.media2.rotation.y = Math.PI / 2;
+        this.media2.position.set(2.85,1.25,-0.15)
+
+
+
+        this.media3 = new THREE.Mesh(
+            this.projectHitBoxGeometry2,
+            this.hitBoxMaterial
+        )
+
+        this.media3.rotation.y = Math.PI / 2;
+        this.media3.position.set(3.2,0.4,-0.55)
+
+
+        this.media4 = new THREE.Mesh(
+            this.projectHitBoxGeometry2,
+            this.hitBoxMaterial
+        )
+
+        this.media4.rotation.y = Math.PI / 2;
+        this.media4.position.set(3.2,0.4,-0.15)
+
+        this.media5 = new THREE.Mesh(
+            this.projectHitBoxGeometry2,
+            this.hitBoxMaterial
+        )
+
+        this.media5.rotation.y = Math.PI / 2;
+        this.media5.position.set(3,0.8,-0.55)
+
+
+        this.media6 = new THREE.Mesh(
+            this.projectHitBoxGeometry2,
+            this.hitBoxMaterial
+        )
+
+        this.media6.rotation.y = Math.PI / 2;
+        this.media6.position.set(3,0.8,-0.15)
+
+    
+
+
+        this.mediabuttonsHitBoxes.add(this.media1,this.media2,this.media3,this.media4,this.media5,this.media6)
+
+        
+
+
+        this.scene.add(this.aboutMeBoxes,this.mediabuttonsHitBoxes)
 
         
         this.actualRoom.children.forEach((child) => {
@@ -573,14 +617,12 @@ break
 
 
             
-            const texture = new THREE.TextureLoader().load('/textures/web13.jpeg');
-            this.textureSocial.wrapS = THREE.RepeatWrapping;
-            this.textureSocial.wrapT = THREE.RepeatWrapping;
-            this.textureSocial.repeat.set(3, 3.1);
-            this.textureSocial.needsUpdate = true;
+            // const texture = new THREE.TextureLoader().load('/textures/phonebg.jpeg');
+            // this.textureSocial.wrapT = THREE.RepeatWrapping;
+            // this.textureSocial.repeat.set(3, 3.1);
+            // this.textureSocial.needsUpdate = true;
             // this.textureSocial.flipY = true;    
-            this.textureSocial.offset.width = 50;
-            this.textureSocial.offset.height = 100;
+           
             if (child.name === "Cube148") {
     
                 //material038
@@ -645,46 +687,6 @@ render();
         }.bind(this));
 
 
-
-
-      
-
-        //otherwise this is going to be this.html element from getlementbyid
-
-        // const aboutmeDiv = document.getElementById("Aboutme");
-        // aboutmeDiv.addEventListener("click",function handleClick() {
-        //     this.experience.camera.perspectiveCamera.position.z = 0;
-        //  this.experience.camera.perspectiveCamera.position.y = 2.5;
-        //  this.experience.camera.perspectiveCamera.position.x = -2.5;
-        // }.bind(this));
-           
-
-            // if (child.name === "Mini_Floor") {
-            //     child.position.x = -0.289521;
-            //     child.position.z = 8.83572;
-            // }
-
-            // if (
-            //     child.name === "Mailbox" ||
-            //     child.name === "Lamp" ||
-            //     child.name === "FloorFirst" ||
-            //     child.name === "FloorSecond" ||
-            //     child.name === "FloorThird" ||
-            //     child.name === "Dirt" ||
-            //     child.name === "Flower1" ||
-            //     child.name === "Flower2"
-            // ) {
-            //     child.scale.set(0, 0, 0);
-            // }
-
-            // child.scale.set(0, 0, 0);
-            // if (child.name === "Cube") {
-            //     // child.scale.set(1, 1, 1);
-            //     child.position.set(0, -1, 0);
-            //     child.rotation.y = Math.PI / 4;
-            // }
-
-            // this.roomChildren[child.name.toLowerCase()] = child;
         });
 
 
@@ -729,4 +731,7 @@ render();
     update() {
         this.actualRoom.rotation.y += 10;
     }
+
+
+    
 }
