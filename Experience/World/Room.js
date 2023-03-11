@@ -416,7 +416,7 @@ break
 
 
         this.signHitBoxes.add(this.projectsHitBox,this.skillsHitBox,this.socialsHitBox)
-        // this.signHitBoxes.visible = false
+        this.signHitBoxes.visible = false
         this.scene.add(this.signHitBoxes);
 
 
@@ -457,7 +457,9 @@ break
       
     
         this.projectHitBoxes.add(this.project1, this.project2, this.project3, this.project4, this.project5)
-        
+        this.projectHitBoxes.visible = false
+
+
         this.scene.add(this.projectHitBoxes);
 
         this.aboutMeBoxes = new THREE.Group()
@@ -553,6 +555,7 @@ break
 
 
         this.mediabuttonsHitBoxes.add(this.media1,this.media2,this.media3,this.media4,this.media5,this.media6)
+        this.mediabuttonsHitBoxes.visible = false
 
         
 
