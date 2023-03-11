@@ -114,10 +114,16 @@ export default class Room {
             this.skillsHitBox,
             this.mediabuttonsHitBoxes,
             this.project1,
-            this.project2,
+            this.project2,  
             this.project3,
             this.project4,
             this.project5,
+            this.media1,
+            this.media2,
+            this.media3,
+            this.media4,
+            this.media5,
+            this.media6,
             
         ]
         
@@ -295,6 +301,32 @@ break
                     
 
 
+
+                    break;
+                    case this.media1: console.log("camera")
+
+                    break;
+                    case this.media2: console.log("insta")
+                    window.location.href = "https://www.instagram.com/patronasxd/";
+
+                    break;
+                    case this.media3: console.log("email")
+                    window.location.href = "mailto:gilleszwijsen@gmail.com";
+
+                    
+                    break;
+                    case this.media4: console.log("twitter")
+                    window.location.href = "https://twitter.com/z_gilles";
+
+                    break;
+                    case this.media5: console.log("whatsapp")
+                    window.location.href = "https://wa.me/31610738222";
+
+                    break;
+                    case this.media6: console.log("github")
+                    window.location.href = "https://patronasxdxd.github.io/Website/";
+
+                    
 
                     break;
 
