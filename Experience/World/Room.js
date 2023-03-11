@@ -29,10 +29,20 @@ export default class Room {
         // this.roomChildren = {};
         this.textureSocial = new THREE.TextureLoader().load('/textures/web13.jpeg');
         this.projectMenu = new THREE.TextureLoader().load('/textures/project1.png');
+        this.projectMenu.wrapS = THREE.RepeatWrapping;
+        this.projectMenu.repeat.x = -1;
         this.project11 = new THREE.TextureLoader().load('/textures/project2.png');
+        this.project11.wrapS = THREE.RepeatWrapping;
+        this.project11.repeat.x = -1;
         this.project22 = new THREE.TextureLoader().load('/textures/project3.png');
+        this.project22.wrapS = THREE.RepeatWrapping;
+        this.project22.repeat.x = -1;
         this.project33 = new THREE.TextureLoader().load('/textures/project4.png');
+        this.project33.wrapS = THREE.RepeatWrapping;
+        this.project33.repeat.x = -1;
         this.project44 = new THREE.TextureLoader().load('/textures/project5.png');
+        this.project44.wrapS = THREE.RepeatWrapping;
+        this.project44.repeat.x = -1;
 
 
         console.log(this.camera,"am")
@@ -438,9 +448,16 @@ export default class Room {
                 break
 
                 case this.project5: console.log("working5")
+                this.actualRoom.children.forEach((child) => {
+    
+                    if (child.name === "Computer") {
+                        child.children[1].material = new THREE.MeshBasicMaterial({
+                            map: this.projectMenu
+                        });
+                    }})
                 // his.projectsHitBox,this.socialsHitBox)
                 break
-
+              
                 case this.projectsHitBox:
                     console.log("porject911")
                     
@@ -479,7 +496,40 @@ render();
 break
 
                 case this.socialsHitBox:
-                    console.log("socual911")
+                   
+    
+                  
+                const targetPositionSocial = { x: 7, y: 2, z: 0 };
+    
+    
+    
+    
+                const startingPosition2 = {
+                    x: this.camera.perspectiveCamera.position.x,
+                    y: this.camera.perspectiveCamera.position.y,
+                    z: this.camera.perspectiveCamera.position.z
+                  };
+            //     this.experience.camera.perspectiveCamera.position.z = 10;
+            //  this.experience.camera.perspectiveCamera.position.y = 3;
+            //  this.experience.camera.perspectiveCamera.position.x = -1;  
+            const tween2 = new TWEEN.Tween(startingPosition2)
+             .to(targetPositionSocial, 2000) // 2000 milliseconds duration
+            .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
+             .onUpdate(() => {
+        // Update the camera position on every frame of the animation
+             this.camera.perspectiveCamera.position.set(
+            startingPosition2.x,
+            startingPosition2.y,
+            startingPosition2.z
+        );
+      })
+      .start(); // Start the animation
+    
+    // Call TWEEN.update() on every frame of your render loop to update the Tween
+ 
+    render();
+            
+              
                     break
             }
     
@@ -747,56 +797,44 @@ break
     
     
     
-                this.actualRoom.children.forEach((child) => {
+                // this.actualRoom.children.forEach((child) => {
     
     
-                    // texture.wrapS = THREE.RepeatWrapping;
-        // texture.wrapT = THREE.RepeatWrapping;
-        // texture.repeat.set(3, 3.1);
-        // texture.needsUpdate = true;
-        // texture.offset.width = 50;
-        // texture.offset.height = 100;
-
     
-                    if (child.name === "Computer") {
-                        child.children[1].material = new THREE.MeshBasicMaterial({
-                            map: this.project33
-                        });
-                    }})
-    
-    //             const targetPosition = { x: 7, y: 2, z: 0 };
+                  
+                const targetPosition = { x: 7, y: 2, z: 0 };
     
     
     
     
-    //             const startingPosition = {
-    //                 x: this.camera.perspectiveCamera.position.x,
-    //                 y: this.camera.perspectiveCamera.position.y,
-    //                 z: this.camera.perspectiveCamera.position.z
-    //               };
-    //         //     this.experience.camera.perspectiveCamera.position.z = 10;
-    //         //  this.experience.camera.perspectiveCamera.position.y = 3;
-    //         //  this.experience.camera.perspectiveCamera.position.x = -1;  
-    //         const tween = new TWEEN.Tween(startingPosition)
-    //          .to(targetPosition, 2000) // 2000 milliseconds duration
-    //         .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
-    //          .onUpdate(() => {
-    //     // Update the camera position on every frame of the animation
-    //          this.camera.perspectiveCamera.position.set(
-    //         startingPosition.x,
-    //         startingPosition.y,
-    //         startingPosition.z
-    //     );
-    //   })
-    //   .start(); // Start the animation
+                const startingPosition = {
+                    x: this.camera.perspectiveCamera.position.x,
+                    y: this.camera.perspectiveCamera.position.y,
+                    z: this.camera.perspectiveCamera.position.z
+                  };
+            //     this.experience.camera.perspectiveCamera.position.z = 10;
+            //  this.experience.camera.perspectiveCamera.position.y = 3;
+            //  this.experience.camera.perspectiveCamera.position.x = -1;  
+            const tween = new TWEEN.Tween(startingPosition)
+             .to(targetPosition, 2000) // 2000 milliseconds duration
+            .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
+             .onUpdate(() => {
+        // Update the camera position on every frame of the animation
+             this.camera.perspectiveCamera.position.set(
+            startingPosition.x,
+            startingPosition.y,
+            startingPosition.z
+        );
+      })
+      .start(); // Start the animation
     
-    // // Call TWEEN.update() on every frame of your render loop to update the Tween
-    // function render() {
-    //   requestAnimationFrame(render);
-    //   TWEEN.update();
-    //   // Render your Three.js scene here
-    // }
-    // render();
+    // Call TWEEN.update() on every frame of your render loop to update the Tween
+    function render() {
+      requestAnimationFrame(render);
+      TWEEN.update();
+      // Render your Three.js scene here
+    }
+    render();
             
               
             }.bind(this));
@@ -809,6 +847,7 @@ break
             this.textureSocial.wrapT = THREE.RepeatWrapping;
             this.textureSocial.repeat.set(3, 3.1);
             this.textureSocial.needsUpdate = true;
+            // this.textureSocial.flipY = true;    
             this.textureSocial.offset.width = 50;
             this.textureSocial.offset.height = 100;
             if (child.name === "Cube148") {
