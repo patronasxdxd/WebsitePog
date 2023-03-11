@@ -307,24 +307,34 @@ break
 
                     break;
                     case this.media2: console.log("insta")
-                    window.location.href = "https://www.instagram.com/patronasxd/";
+                    window.open(
+                        "https://www.instagram.com/patronasxd/", "_blank");
+                 
 
                     break;
                     case this.media3: console.log("email")
-                    window.location.href = "mailto:gilleszwijsen@gmail.com";
+                    window.open(
+                        "mailto:gilleszwijsen@gmail.com", "_blank");
+                
 
                     
                     break;
                     case this.media4: console.log("twitter")
-                    window.location.href = "https://twitter.com/z_gilles";
+
+                    window.open(
+                        "https://twitter.com/z_gilles", "_blank");
+                    // window.location.href = "https://twitter.com/z_gilles";
 
                     break;
                     case this.media5: console.log("whatsapp")
-                    window.location.href = "https://wa.me/31610738222";
+                    window.open(
+                        "https://wa.me/31610738222", "_blank");
+                  
 
                     break;
                     case this.media6: console.log("github")
-                    window.location.href = "https://patronasxdxd.github.io/Website/";
+                    window.open(
+                        "https://patronasxdxd.github.io/Website/", "_blank");
 
                     
 
@@ -604,47 +614,11 @@ break
             projectDiv.addEventListener("click",function handleClick() {
     
     
+                window.open(
+                    "https://patronasxdxd.github.io/Website/", "_blank");
     
     
-    
-                // this.actualRoom.children.forEach((child) => {
-    
-    
-    
-                  
-                const targetPosition = { x: 7, y: 2, z: 0 };
-    
-    
-    
-    
-                const startingPosition = {
-                    x: this.camera.perspectiveCamera.position.x,
-                    y: this.camera.perspectiveCamera.position.y,
-                    z: this.camera.perspectiveCamera.position.z
-                  };
-            //     this.experience.camera.perspectiveCamera.position.z = 10;
-            //  this.experience.camera.perspectiveCamera.position.y = 3;
-            //  this.experience.camera.perspectiveCamera.position.x = -1;  
-            const tween = new TWEEN.Tween(startingPosition)
-             .to(targetPosition, 2000) // 2000 milliseconds duration
-            .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
-             .onUpdate(() => {
-        // Update the camera position on every frame of the animation
-             this.camera.perspectiveCamera.position.set(
-            startingPosition.x,
-            startingPosition.y,
-            startingPosition.z
-        );
-      })
-      .start(); // Start the animation
-    
-    // Call TWEEN.update() on every frame of your render loop to update the Tween
-    function render() {
-      requestAnimationFrame(render);
-      TWEEN.update();
-      // Render your Three.js scene here
-    }
-    render();
+
             
               
             }.bind(this));
