@@ -23,8 +23,21 @@ export default class Sizes extends EventEmitter{
 
 
    setLoaders() {
+
+    const progresbar = document.getElementById('progress-bar');
+    const Loadingmanagerr = new THREE.LoadingManager();
+    Loadingmanagerr.onProgress = function(url,loaded,total){
+        progresbar.value = (loaded / total) * 100;
+    }
+    const progresbarContainer = document.querySelector('.progress-bar-container')
+
+    Loadingmanagerr.onLoad = function(){
+        progresbarContainer.style.display = 'none';
+    }
+
+
     this.loaders = {};
-    this.loaders.gltfLoader = new GLTFLoader();
+    this.loaders.gltfLoader = new GLTFLoader(Loadingmanagerr);
     this.loaders.dracoLoader = new DRACOLoader();
     this.loaders.dracoLoader.setDecoderPath("/draco/");
     this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader);
