@@ -2,7 +2,7 @@ export default [
     {
         name: "room",
         type: "glbModel",
-        path: "/models/Potioa7.glb",
+        path: "/models/pog6.glb",
     },
     {
         name: "screen",

@@ -693,6 +693,34 @@ render();
         
             //This moves the tv xddd
         // this.room.scene.children[1].position.y = 10
+
+        const bishopMesh = this.room.scene.getObjectByName("White_Bishop003_Cylinder011");
+        console.log(bishopMesh);
+        // bishopMesh.position.z += -0.002;
+
+    // Assuming your mesh is stored in a variable called "bishopMesh"
+let count = 0;
+setInterval(() => {
+  const remainder = count % 4;
+  switch (remainder) {
+    case 0:
+        bishopMesh.position.z += -0.002;
+      break;
+    case 1:
+        bishopMesh.position.x += -0.002;
+      break;
+    case 2:
+        bishopMesh.position.z += +0.002;
+      break;
+    case 3:
+        bishopMesh.position.x += 0.002;
+      break;
+  }
+  count += 1;
+}, 10000); // 10000 milliseconds = 10 seconds
+
+        
+
         }.bind(this));
 
 
