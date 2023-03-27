@@ -24,16 +24,29 @@ export default class Sizes extends EventEmitter{
 
    setLoaders() {
 
-    const progresbar = document.getElementById('progress-bar');
+    const loadingBar = document.getElementById('loading-bar');
     const Loadingmanagerr = new THREE.LoadingManager();
-    Loadingmanagerr.onProgress = function(url,loaded,total){
-        progresbar.value = (loaded / total) * 100;
+    
+    function updateLoadingBar(progress) {
+      const barElement = loadingBar.querySelector('.bar');
+      const growingBarElement = loadingBar.querySelector('.growing-bar');
+    
+      barElement.classList.remove('bar-0', 'bar-10', 'bar-20', 'bar-30', 'bar-40', 'bar-50', 'bar-60', 'bar-70', 'bar-80', 'bar-90', 'bar-100');
+      growingBarElement.style.width = `${progress}%`;
+      barElement.classList.add(`bar-${Math.floor(progress / 10) * 10}`);
     }
-    const progresbarContainer = document.querySelector('.progress-bar-container')
-
-    Loadingmanagerr.onLoad = function(){
-        progresbarContainer.style.display = 'none';
+    
+    Loadingmanagerr.onProgress = function(url, loaded, total) {
+      const progress = (loaded / total) * 100;
+      updateLoadingBar(progress);
     }
+    
+    const progressBarContainer = document.querySelector('.progress-bar-container');
+    
+    Loadingmanagerr.onLoad = function() {
+      document.getElementById('preLoad').style.display = 'none';
+    }
+    
 
 
     this.loaders = {};

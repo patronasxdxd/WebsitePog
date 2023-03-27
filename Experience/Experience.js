@@ -32,21 +32,31 @@ export default class Experience{
         this.resources = new Resources(assets);
         this.world = new World;
 
-        this.time.on("update",()=> {
-            this.update();
-        })
         this.time.on("resize",()=> {
             this.resize();
         })
+        this.time.on("update", () => {
+            this.update();
+        });
+       
        
     }
 
 
 
+   
     update(){
+        // console.log("uyes");
+        // requestAnimationFrame(this.render.bind(this));
+    // requestAnimationFrame(this.render.bind(this));
+
         this.camera.update();
-        this.world.resize();
+        this.world.update();
         this.renderer.update();
+        // this.room.update();
+        if (this.controls) {
+            this.controls.update();
+        }
     }
 
     resize(){

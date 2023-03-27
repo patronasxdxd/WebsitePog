@@ -12,7 +12,7 @@ export default class Room {
         this.experience = new Experience();
         this.scene = this.experience.scene;
         this.resources = this.experience.resources;
-        // this.time = this.experience.time;
+        this.time = this.experience.time;
         this.room = this.resources.items.room;
         this.raycaster = new THREE.Raycaster()
         console.log("here!");
@@ -44,6 +44,7 @@ export default class Room {
         this.project44.wrapS = THREE.RepeatWrapping;
         this.project44.repeat.x = -1;
 
+        this.setAnimation();
             this.setLogic()
             this.setModel();
 
@@ -755,18 +756,23 @@ setInterval(() => {
     
 
 
-    // setAnimation() {
-    //     console(this.room)
-    //     this.mixer = new THREE.AnimationMixer(this.actualRoom);
-    //     this.swim = this.mixer.clipAction(this.room.animations[0]);
-    //     this.swim.play();
-    // }
+    setAnimation() {
+        this.mixer = new THREE.AnimationMixer(this.actualRoom);
+
+        console.log(this.mixer);
+      
+        this.room.animations.forEach((item, index) => {
+          this.swim = this.mixer.clipAction(this.room.animations[index]);
+          this.swim.play();
+        });
+    }
 
 
     resize() {}
 
     update() {
-        this.actualRoom.rotation.y += 10;
+        this.mixer.update(this.time.delta * 0.0009);
+
     }
 
 
