@@ -310,15 +310,10 @@ break
                     case this.media2: console.log("insta")
                     window.open(
                         "https://www.instagram.com/patronasxd/", "_blank");
-                 
-
                     break;
                     case this.media3: console.log("email")
                     window.open(
-                        "mailto:gilleszwijsen@gmail.com", "_blank");
-                
-
-                    
+                        "mailto:gilleszwijsen@gmail.com", "_blank");                    
                     break;
                     case this.media4: console.log("twitter")
 
@@ -427,7 +422,7 @@ break
 
 
         this.signHitBoxes.add(this.projectsHitBox,this.skillsHitBox,this.socialsHitBox)
-        this.signHitBoxes.visible = false
+        this.signHitBoxes.visible = true
         this.scene.add(this.signHitBoxes);
 
 
@@ -468,7 +463,7 @@ break
       
     
         this.projectHitBoxes.add(this.project1, this.project2, this.project3, this.project4, this.project5)
-        this.projectHitBoxes.visible = false
+        this.projectHitBoxes.visible = true
 
 
         this.scene.add(this.projectHitBoxes);
@@ -504,7 +499,7 @@ break
         
 
         this.aboutMeBoxes.add(this.aboutMeBack, this.aboutMeScreens, this.skills, this.experience)
-        this.aboutMeBoxes.visible = false
+        this.aboutMeBoxes.visible = true
 
 
         this.mediabuttonsHitBoxes = new THREE.Group()
@@ -516,7 +511,7 @@ break
         )
 
         this.media1.rotation.y = Math.PI / 2;
-        this.media1.position.set(2.85,1.25,-0.55)
+        this.media1.position.set(8.3,0.40,-9.20)
 
         this.media2 = new THREE.Mesh(
             this.projectHitBoxGeometry2,
@@ -524,7 +519,7 @@ break
         )
 
         this.media2.rotation.y = Math.PI / 2;
-        this.media2.position.set(2.85,1.25,-0.15)
+        this.media2.position.set(8.05,1.20,-9.50)
 
 
 
@@ -534,7 +529,7 @@ break
         )
 
         this.media3.rotation.y = Math.PI / 2;
-        this.media3.position.set(3.2,0.4,-0.55)
+        this.media3.position.set(8.3,0.40,-9.50)
 
 
         this.media4 = new THREE.Mesh(
@@ -543,7 +538,7 @@ break
         )
 
         this.media4.rotation.y = Math.PI / 2;
-        this.media4.position.set(3.2,0.4,-0.15)
+        this.media4.position.set(8.2,0.80,-9.20)
 
         this.media5 = new THREE.Mesh(
             this.projectHitBoxGeometry2,
@@ -551,7 +546,7 @@ break
         )
 
         this.media5.rotation.y = Math.PI / 2;
-        this.media5.position.set(3,0.8,-0.55)
+        this.media5.position.set(8.05,1.20,-9.20)
 
 
         this.media6 = new THREE.Mesh(
@@ -560,13 +555,13 @@ break
         )
 
         this.media6.rotation.y = Math.PI / 2;
-        this.media6.position.set(3,0.8,-0.15)
+        this.media6.position.set(8.2,0.80,-9.50)
 
     
 
 
         this.mediabuttonsHitBoxes.add(this.media1,this.media2,this.media3,this.media4,this.media5,this.media6)
-        this.mediabuttonsHitBoxes.visible = false
+        this.mediabuttonsHitBoxes.visible = true
 
         
 
@@ -661,7 +656,7 @@ break
         socialDiv.addEventListener("click",function handleClick() {
 
 
-            const targetPosition = { x: -1, y: 3, z: 10 };
+            const targetPosition = { x: -20, y: 3, z: -2 };
 
             const startingPosition = {
                 x: this.camera.perspectiveCamera.position.x,
@@ -696,9 +691,65 @@ render();
         // this.room.scene.children[1].position.y = 10
 
         const bishopMesh = this.room.scene.getObjectByName("White_Bishop003_Cylinder011");
-        console.log(bishopMesh);
-        // bishopMesh.position.z += -0.002;
+        const whiteQueen = this.room.scene.getObjectByName("chesspiece_queen_Cylinder013");
+        const whiteKing = this.room.scene.getObjectByName("chesspiece_king_Cylinder.012");
+        const whiteBishop2 = this.room.scene.getObjectByName("White_Bishop002_Cylinder011");
+        const whitePawn1 = this.room.scene.getObjectByName("White_Pawn015_Cylinder010");  //
+        const whitePawn2 = this.room.scene.getObjectByName("White_Pawn014_Cylinder010"); // 
+        const whitePawn3 = this.room.scene.getObjectByName("White_Pawn013_Cylinder010"); // 
+        const whitePawn4 = this.room.scene.getObjectByName("White_Pawn012_Cylinder010"); // 
+        const whitePawn5 = this.room.scene.getObjectByName("White_Pawn011_Cylinder010"); // 
+        const whitePawn6 = this.room.scene.getObjectByName("White_Pawn010_Cylinder010"); // 
+        const whitePawn7 = this.room.scene.getObjectByName("White_Pawn009_Cylinder010"); // 
+        const whitePawn8 = this.room.scene.getObjectByName("White_Pawn008_Cylinder010");  //
 
+        const whiteKnight1 = this.room.scene.getObjectByName("chesspiece_knight003_Cylinder009");  //works
+        const whiteKnight2 = this.room.scene.getObjectByName("chesspiece_knight002_Cylinder009"); //works but is black
+
+        const whiteRook1 = this.room.scene.getObjectByName("chesspiece_rook003_Cylinder008"); // workls
+        const whiteRook2 = this.room.scene.getObjectByName("chesspiece_rook002_Cylinder008"); //works 
+
+
+
+        const blackRook1 = this.room.scene.getObjectByName("chesspiece_rook000_Cylinder007");
+        const blackRook2 = this.room.scene.getObjectByName("chesspiece_rook001_Cylinder007");
+        const blackKnight1 = this.room.scene.getObjectByName("chesspiece_knight000_Cylinder006");
+        const blackKnight2 = this.room.scene.getObjectByName("chesspiece_knight001_Cylinder006");
+        const blackPawn1 = this.room.scene.getObjectByName("White_Pawn007_Cylinder");
+        const blackPawn2 = this.room.scene.getObjectByName("White_Pawn006_Cylinder");
+        const blackPawn3 = this.room.scene.getObjectByName("White_Pawn005_Cylinder");
+        const blackPawn4 = this.room.scene.getObjectByName("White_Pawn004_Cylinder");
+        const blackPawn5 = this.room.scene.getObjectByName("White_Pawn003_Cylinder");
+        const blackPawn6 = this.room.scene.getObjectByName("White_Pawn002_Cylinder");
+        const blackPawn7 = this.room.scene.getObjectByName("White_Pawn001_Cylinder");
+        const blackPawn8 = this.room.scene.getObjectByName("White_Pawn_Cylinder");
+        const blackBischop1 = this.room.scene.getObjectByName("White_Bishop001_Cylinder001");
+        const blackBischop2 = this.room.scene.getObjectByName("White_Bishop_Cylinder001");
+        const blackQueen = this.room.scene.getObjectByName("chesspiece_queen001_Cylinder005");
+        const blackKing = this.room.scene.getObjectByName("chesspiece_king001_Cylinder002");
+    
+
+        // console.log(  this.room.scene.getElementById(253));
+
+        console.log(whiteKnight1);
+        console.log("dwadawdwa")
+
+        blackRook1.position.z += 0.002;
+        blackQueen.position.z += 0.002;
+        blackPawn1.position.z += 0.002;
+        blackPawn2.position.z += 0.002;
+        blackPawn3.position.z += 0.002;
+        blackPawn4.position.z += 0.002;
+        blackPawn5.position.z += 0.002;
+        blackPawn6.position.z += 0.002;
+        blackPawn7.position.z += 0.002;
+        blackPawn8.position.z += 0.002;
+        blackBischop2.position.z += 0.002;
+        blackBischop1.position.z += 0.002;
+        blackRook2.position.z += 0.002;
+        blackKing.position.z += 0.002;
+        blackKnight2.position.z += 0.002;
+        blackKnight1.position.z += 0.002;
     // Assuming your mesh is stored in a variable called "bishopMesh"
 let count = 0;
 setInterval(() => {
@@ -759,12 +810,12 @@ setInterval(() => {
     setAnimation() {
         this.mixer = new THREE.AnimationMixer(this.actualRoom);
 
-        console.log(this.mixer);
+        // console.log(this.mixer);
       
-        this.room.animations.forEach((item, index) => {
-          this.swim = this.mixer.clipAction(this.room.animations[index]);
-          this.swim.play();
-        });
+        // this.room.animations.forEach((item, index) => {
+        //   this.swim = this.mixer.clipAction(this.room.animations[index]);
+        //   this.swim.play();
+        // });
     }
 
 
