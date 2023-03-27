@@ -694,20 +694,20 @@ render();
         const whiteQueen = this.room.scene.getObjectByName("chesspiece_queen_Cylinder013");
         const whiteKing = this.room.scene.getObjectByName("chesspiece_king_Cylinder.012");
         const whiteBishop2 = this.room.scene.getObjectByName("White_Bishop002_Cylinder011");
-        const whitePawn1 = this.room.scene.getObjectByName("White_Pawn015_Cylinder010");  //
-        const whitePawn2 = this.room.scene.getObjectByName("White_Pawn014_Cylinder010"); // 
-        const whitePawn3 = this.room.scene.getObjectByName("White_Pawn013_Cylinder010"); // 
-        const whitePawn4 = this.room.scene.getObjectByName("White_Pawn012_Cylinder010"); // 
-        const whitePawn5 = this.room.scene.getObjectByName("White_Pawn011_Cylinder010"); // 
-        const whitePawn6 = this.room.scene.getObjectByName("White_Pawn010_Cylinder010"); // 
-        const whitePawn7 = this.room.scene.getObjectByName("White_Pawn009_Cylinder010"); // 
-        const whitePawn8 = this.room.scene.getObjectByName("White_Pawn008_Cylinder010");  //
+        const whitePawn1 = this.room.scene.getObjectByName("White_Pawn015_Cylinder010");  
+        const whitePawn2 = this.room.scene.getObjectByName("White_Pawn014_Cylinder010"); 
+        const whitePawn3 = this.room.scene.getObjectByName("White_Pawn013_Cylinder010");
+        const whitePawn4 = this.room.scene.getObjectByName("White_Pawn012_Cylinder010");  
+        const whitePawn5 = this.room.scene.getObjectByName("White_Pawn011_Cylinder010"); 
+        const whitePawn6 = this.room.scene.getObjectByName("White_Pawn010_Cylinder010"); 
+        const whitePawn7 = this.room.scene.getObjectByName("White_Pawn009_Cylinder010");
+        const whitePawn8 = this.room.scene.getObjectByName("White_Pawn008_Cylinder010");  
 
-        const whiteKnight1 = this.room.scene.getObjectByName("chesspiece_knight003_Cylinder009");  //works
-        const whiteKnight2 = this.room.scene.getObjectByName("chesspiece_knight002_Cylinder009"); //works but is black
+        const whiteKnight1 = this.room.scene.getObjectByName("chesspiece_knight003_Cylinder009");  
+        const whiteKnight2 = this.room.scene.getObjectByName("chesspiece_knight002_Cylinder009"); 
 
-        const whiteRook1 = this.room.scene.getObjectByName("chesspiece_rook003_Cylinder008"); // workls
-        const whiteRook2 = this.room.scene.getObjectByName("chesspiece_rook002_Cylinder008"); //works 
+        const whiteRook1 = this.room.scene.getObjectByName("chesspiece_rook003_Cylinder008"); 
+        const whiteRook2 = this.room.scene.getObjectByName("chesspiece_rook002_Cylinder008"); 
 
 
 
@@ -729,28 +729,12 @@ render();
         const blackKing = this.room.scene.getObjectByName("chesspiece_king001_Cylinder002");
     
 
-        // console.log(  this.room.scene.getElementById(253));
 
-        console.log(whiteKnight1);
-        console.log("dwadawdwa")
+        // blackKing.position.x = -10.285;
+        // blackKing.position.y = 0.775;
+        // blackKing.position.z = 0.79
 
-        blackRook1.position.z += 0.002;
-        blackQueen.position.z += 0.002;
-        blackPawn1.position.z += 0.002;
-        blackPawn2.position.z += 0.002;
-        blackPawn3.position.z += 0.002;
-        blackPawn4.position.z += 0.002;
-        blackPawn5.position.z += 0.002;
-        blackPawn6.position.z += 0.002;
-        blackPawn7.position.z += 0.002;
-        blackPawn8.position.z += 0.002;
-        blackBischop2.position.z += 0.002;
-        blackBischop1.position.z += 0.002;
-        blackRook2.position.z += 0.002;
-        blackKing.position.z += 0.002;
-        blackKnight2.position.z += 0.002;
-        blackKnight1.position.z += 0.002;
-    // Assuming your mesh is stored in a variable called "bishopMesh"
+
 let count = 0;
 setInterval(() => {
   const remainder = count % 4;
