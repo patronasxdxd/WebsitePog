@@ -15,7 +15,7 @@ export default class Room {
         this.time = this.experience.time;
         this.room = this.resources.items.room;
         this.raycaster = new THREE.Raycaster()
-        console.log("here!");
+    
         console.log(this.room);
         this.debug = this.experience.debug
         this.actualRoom = this.room.scene;
@@ -43,8 +43,6 @@ export default class Room {
         this.project44 = new THREE.TextureLoader().load('/textures/project5.png');
         this.project44.wrapS = THREE.RepeatWrapping;
         this.project44.repeat.x = -1;
-
-       
             this.setLogic()
             this.setModel();
             this.setAnimation();
@@ -607,17 +605,49 @@ break
             }
 
             const projectDiv = document.getElementById("Socials");
-            projectDiv.addEventListener("click",function handleClick() {
-    
-    
-                window.open(
-                    "https://patronasxdxd.github.io/Website/", "_blank");
-    
-    
+            
 
             
-              
-            }.bind(this));
+projectDiv.addEventListener("click", function handleClick() {
+    const targetPosition = { x: 14, y: 2, z: -14.2 };
+
+    const startingPosition = {
+        x: this.camera.perspectiveCamera.position.x,
+        y: this.camera.perspectiveCamera.position.y,
+        z: this.camera.perspectiveCamera.position.z
+      };
+
+const tween = new TWEEN.Tween(startingPosition)
+ .to(targetPosition, 2000) // 2000 milliseconds duration
+.easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
+ .onUpdate(() => {
+// Update the camera position on every frame of the animation
+ this.camera.perspectiveCamera.position.set(
+startingPosition.x,
+startingPosition.y,
+startingPosition.z
+);
+})
+.start(); // Start the animation
+
+// Call TWEEN.update() on every frame of your render loop to update the Tween
+function render() {
+requestAnimationFrame(render);
+TWEEN.update();
+// Render your Three.js scene here
+}
+render();
+
+    //This moves the tv xddd
+// this.room.scene.children[1].position.y = 10
+
+
+
+
+
+
+}.bind(this));
+
 
 
 
@@ -650,13 +680,14 @@ break
 
 
 
+            this.playchess();
 
 
             const socialDiv = document.getElementById("Projects");
         socialDiv.addEventListener("click",function handleClick() {
 
 
-            const targetPosition = { x: -13, y: 1, z: 0 };
+            const targetPosition = { x: -14, y: 0.73, z: 0.2 };
 
             const startingPosition = {
                 x: this.camera.perspectiveCamera.position.x,
@@ -690,9 +721,97 @@ render();
             //This moves the tv xddd
         // this.room.scene.children[1].position.y = 10
 
+       
+
+
+        
+
+        }.bind(this));
+
+
+        const Skills = document.getElementById("Skills");
+        Skills.addEventListener("click",function handleClick() {
+
+
+            const targetPosition = { x: -13.4, y: 0.4, z: -13 };
+
+            const startingPosition = {
+                x: this.camera.perspectiveCamera.position.x,
+                y: this.camera.perspectiveCamera.position.y,
+                z: this.camera.perspectiveCamera.position.z
+              };
+        //     this.experience.camera.perspectiveCamera.position.z = 10;
+        //  this.experience.camera.perspectiveCamera.position.y = 3;
+        //  this.experience.camera.perspectiveCamera.position.x = -1;  
+        const tween = new TWEEN.Tween(startingPosition)
+         .to(targetPosition, 2000) // 2000 milliseconds duration
+        .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
+         .onUpdate(() => {
+    // Update the camera position on every frame of the animation
+         this.camera.perspectiveCamera.position.set(
+        startingPosition.x,
+        startingPosition.y,
+        startingPosition.z
+    );
+  })
+  .start(); // Start the animation
+
+// Call TWEEN.update() on every frame of your render loop to update the Tween
+function render() {
+  requestAnimationFrame(render);
+  TWEEN.update();
+  // Render your Three.js scene here
+}
+render();
+        
+            //This moves the tv xddd
+        // this.room.scene.children[1].position.y = 10
+
+       
+
+
+        
+
+        }.bind(this));
+
+
+        });
+
+
+        
+        // const width = 0.5;
+        // const height = 0.7;
+        // const intensity = 1;
+        // const rectLight = new THREE.RectAreaLight(
+        //     0xffffff,
+        //     intensity,
+        //     width,
+        //     height
+        // );
+        // rectLight.position.set(7.68244, 7, 0.5);
+        // rectLight.rotation.x = -Math.PI / 2;
+        // rectLight.rotation.z = Math.PI / 4;
+        // this.actualRoom.add(rectLight);
+
+        // this.roomChildren["rectLight"] = rectLight;
+
+        // const rectLightHelper = new RectAreaLightHelper(rectLight);
+        // rectLight.add(rectLightHelper);
+        // console.log(this.room);
+
+        this.scene.add(this.actualRoom);
+        // this.actualRoom.scale.set(0.11, 0.11, 0.11);
+    }
+
+    
+
+    playchess(){
+
+        console.log("dwa")
         const crabOne = this.room.scene.getObjectByName("CrabPlayerOne");
         const crabTwo = this.room.scene.getObjectByName("CrabPlayerTwo");
 
+       
         const bishopMesh = this.room.scene.getObjectByName("White_Bishop003_Cylinder011");
         const whiteQueen = this.room.scene.getObjectByName("chesspiece_queen_Cylinder013");
         const whiteKing = this.room.scene.getObjectByName("chesspiece_king_Cylinder.012");
@@ -733,28 +852,24 @@ render();
     
 
 
-        // blackKing.position.x = -10.285;
-        // blackKing.position.y = 0.775;
-        // blackKing.position.z = 0.79
+        let crabOnePosition = crabOne.position.clone(); // clone the position to avoid reference issues
+        let crabTwoPosition = crabTwo.position.clone();
+        let whitePawn4Position = whitePawn4.position.clone();
+        let whitePawn8Position = whitePawn8.position.clone();
+        let whiteKnight1Position = whiteKnight1.position.clone();
+        let blackKnight2Position = blackKnight2.position.clone();
+        let blackPawn5Position = blackPawn5.position.clone();
 
 
-        // let count = 0;
-        // setInterval(() => {
-        // //   const remainder = count % 4;
-        // //   for (let index = 0; index < 100000; index++) {
-        // //     bishopMesh.position.z -= 0.00000001;
-        // //     crabOne.position.z -= 0.00000001;
-           
-        // //   }
 
 
-        // )
 
-
-        let timer = 0.1
+     
+        let timer = 0.01
 
 
         async function runLoop() {
+        
             for (let index = 0; index < 120; index++) {
               crabOne.position.z -= 0.00001;
                 
@@ -764,7 +879,7 @@ render();
               }
               await new Promise(resolve => setTimeout(resolve, timer));
             }
-            walkBack()
+            await walkBack()
           }
 
           async function walkBack() {
@@ -1022,11 +1137,9 @@ render();
 
         let count = 0;
 setInterval(() => {
-//   const remainder = count % 4;
-// switch (remainder) {
-
-  switch (count) {
-    case 0:
+    
+    switch (count) {
+        case 0:
         runLoop()
         
       break;
@@ -1051,8 +1164,23 @@ setInterval(() => {
     case 7:
         runLoop8()
         break;
+  
+    case 8:
+
+        
+    
+            crabOne.position.copy(crabOnePosition);
+            crabTwo.position.copy(crabTwoPosition);
+            whitePawn4.position.copy(whitePawn4Position);
+            whitePawn8.position.copy(whitePawn8Position);
+            whiteKnight1.position.copy(whiteKnight1Position);
+            blackKnight2.position.copy(blackKnight2Position);
+            blackPawn5.position.copy(blackPawn5Position);
+       
+
+        break
   }
-  count += 1;
+  count = (count + 1) % 9; // reset the count to 0 after it reaches 8
 }, 10000); // 10000 milliseconds = 10 seconds
 
 
@@ -1061,42 +1189,7 @@ setInterval(() => {
         
 
 
-
-
-        
-
-        }.bind(this));
-
-
-        });
-
-
-        
-        // const width = 0.5;
-        // const height = 0.7;
-        // const intensity = 1;
-        // const rectLight = new THREE.RectAreaLight(
-        //     0xffffff,
-        //     intensity,
-        //     width,
-        //     height
-        // );
-        // rectLight.position.set(7.68244, 7, 0.5);
-        // rectLight.rotation.x = -Math.PI / 2;
-        // rectLight.rotation.z = Math.PI / 4;
-        // this.actualRoom.add(rectLight);
-
-        // this.roomChildren["rectLight"] = rectLight;
-
-        // const rectLightHelper = new RectAreaLightHelper(rectLight);
-        // rectLight.add(rectLightHelper);
-        // console.log(this.room);
-
-        this.scene.add(this.actualRoom);
-        // this.actualRoom.scale.set(0.11, 0.11, 0.11);
     }
-
-    
 
 
     setAnimation() {
