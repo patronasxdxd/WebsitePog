@@ -1140,6 +1140,14 @@ setInterval(() => {
     
     switch (count) {
         case 0:
+            crabOne.position.copy(crabOnePosition);
+            crabTwo.position.copy(crabTwoPosition);
+            whitePawn4.position.copy(whitePawn4Position);
+            whitePawn8.position.copy(whitePawn8Position);
+            whiteKnight1.position.copy(whiteKnight1Position);
+            blackKnight2.position.copy(blackKnight2Position);
+            blackPawn5.position.copy(blackPawn5Position);
+            blackPawn5.visible = true;
         runLoop()
         
       break;
@@ -1166,22 +1174,11 @@ setInterval(() => {
         break;
   
     case 8:
-
-        
-    
-            crabOne.position.copy(crabOnePosition);
-            crabTwo.position.copy(crabTwoPosition);
-            whitePawn4.position.copy(whitePawn4Position);
-            whitePawn8.position.copy(whitePawn8Position);
-            whiteKnight1.position.copy(whiteKnight1Position);
-            blackKnight2.position.copy(blackKnight2Position);
-            blackPawn5.position.copy(blackPawn5Position);
-       
-
+        //just waiting
         break
   }
   count = (count + 1) % 9; // reset the count to 0 after it reaches 8
-}, 10000); // 10000 milliseconds = 10 seconds
+}, 11500); // 11500 milliseconds = 11.5 seconds
 
 
        
