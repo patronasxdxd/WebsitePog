@@ -755,10 +755,10 @@ render();
 
 
         async function runLoop() {
-            for (let index = 0; index < 140; index++) {
+            for (let index = 0; index < 120; index++) {
               crabOne.position.z -= 0.00001;
                 
-              if (index > 40) {
+              if (index > 36) {
                 whitePawn4.position.z -= 0.00001;
 
               }
@@ -768,14 +768,14 @@ render();
           }
 
           async function walkBack() {
-            for (let index = 0; index < 140; index++) {
+            for (let index = 0; index < 120; index++) {
               crabOne.position.z += 0.00001;
               await new Promise(resolve => setTimeout(resolve, timer));
             }
           }
 
           async function walkTo(){
-            for (let index = 0; index < 160; index++) {
+            for (let index = 0; index < 125; index++) {
                 crabTwo.position.x += 0.00001;
                 await new Promise(resolve => setTimeout(resolve, timer));
               }
@@ -783,7 +783,7 @@ render();
           
 
           async function walkBack2() {
-            for (let index = 0; index < 100; index++) {
+            for (let index = 0; index < 80; index++) {
               crabTwo.position.z -= 0.00001;
               await new Promise(resolve => setTimeout(resolve, timer));
             }
@@ -793,8 +793,8 @@ render();
 
             await walkTo();
 
-            for (let index = 0; index < 100; index++) {
-            if (index < 100 ){
+            for (let index = 0; index < 80; index++) {
+            if (index < 80 ){
             crabTwo.position.z += 0.00001;
             }
             
@@ -805,7 +805,7 @@ render();
             }
 
 
-            for (let index = 0; index < 50; index++) {
+            for (let index = 0; index < 40; index++) {
                 
                 crabTwo.position.x -= 0.00001;
                 
@@ -838,13 +838,13 @@ render();
 
             await walkTo2();
 
-            for (let index = 0; index < 50; index++) {
+            for (let index = 0; index < 40; index++) {
               whiteKnight1.position.z -= 0.00001;
               crabOne.position.z -= 0.00001;
               await new Promise(resolve => setTimeout(resolve, timer));
             }
 
-            for (let index = 0; index < 100; index++) {
+            for (let index = 0; index < 80; index++) {
                 whiteKnight1.position.x += 0.00001;
                 crabOne.position.x += 0.00001;
                 await new Promise(resolve => setTimeout(resolve, timer));
@@ -858,14 +858,14 @@ render();
           
 
           async function walkTo3() {
-            for (let index = 0; index < 50; index++) {
+            for (let index = 0; index < 40; index++) {
                 crabTwo.position.x -= 0.00001;
               await new Promise(resolve => setTimeout(resolve, timer));
             }
           }
 
           async function walkBack4() {
-            for (let index = 0; index < 140; index++) {
+            for (let index = 0; index < 120; index++) {
               crabTwo.position.z -= 0.00001;
               await new Promise(resolve => setTimeout(resolve, timer));
             }
@@ -876,8 +876,8 @@ render();
 
             await walkTo3();
 
-            for (let index = 0; index < 140; index++) {
-                if (index>40){
+            for (let index = 0; index < 120; index++) {
+                if (index>35){
                 blackPawn5.position.z += 0.00001;
                 }
 
@@ -890,13 +890,13 @@ render();
 
           async function runLoop5() {
 
-            for (let index = 0; index < 140; index++) {
+            for (let index = 0; index < 120; index++) {
                 crabOne.position.z -= 0.00001;
                 await new Promise(resolve => setTimeout(resolve, timer));
               }
 
 
-              for (let index = 0; index < 50; index++) {
+              for (let index = 0; index < 40; index++) {
                 crabOne.position.z -= 0.00001;
                 crabOne.position.x += 0.00001;
                 whitePawn4.position.z -= 0.00001;
@@ -905,7 +905,7 @@ render();
                 await new Promise(resolve => setTimeout(resolve, timer));
               }
               blackPawn5.visible = false;
-              for (let index = 0; index < 190; index++) {
+              for (let index = 0; index < 160; index++) {
                 crabOne.position.z += 0.00001;
                 await new Promise(resolve => setTimeout(resolve, timer));
               }
@@ -914,31 +914,31 @@ render();
 
           async function runLoop6() {
 
-            for (let index = 0; index < 50; index++) {
+            for (let index = 0; index < 40; index++) {
                 crabTwo.position.x += 0.00001;
                 await new Promise(resolve => setTimeout(resolve, timer));
               }
 
-              for (let index = 0; index < 80; index++) {
+              for (let index = 0; index < 60; index++) {
                 crabTwo.position.z += 0.00001;
                 await new Promise(resolve => setTimeout(resolve, timer));
               }
 
 
-              for (let index = 0; index < 100; index++) {
+              for (let index = 0; index < 80; index++) {
                 blackKnight2.position.z += 0.00001;
                 crabTwo.position.z += 0.00001;
                 await new Promise(resolve => setTimeout(resolve, timer));
               }
 
 
-              for (let index = 0; index < 50; index++) {
+              for (let index = 0; index < 40; index++) {
                 crabTwo.position.x += 0.00001;
                 blackKnight2.position.x += 0.00001;
                 await new Promise(resolve => setTimeout(resolve, timer));
               }
 
-              for (let index = 0; index < 180; index++) {
+              for (let index = 0; index < 150; index++) {
                 crabTwo.position.z -= 0.00001;
                 await new Promise(resolve => setTimeout(resolve, timer));
               }
@@ -949,13 +949,13 @@ render();
 
 
           async function runLoop7() {
-            for (let index = 0; index < 150; index++) {
+            for (let index = 0; index < 130; index++) {
                 crabOne.position.x += 0.00001;
                 await new Promise(resolve => setTimeout(resolve, timer));
               }
 
 
-              for (let index = 0; index < 70; index++) {
+              for (let index = 0; index < 65; index++) {
                 crabOne.position.z -= 0.00001;
                 if (index >20) {
                     whitePawn8.position.z -= 0.00001;
@@ -965,7 +965,7 @@ render();
               }
 
 
-              for (let index = 0; index < 70; index++) {
+              for (let index = 0; index < 50; index++) {
                 crabOne.position.z += 0.00001;
                 await new Promise(resolve => setTimeout(resolve, timer));
               }
@@ -1001,7 +1001,7 @@ render();
               }
 
 
-              for (let index = 0; index < 50; index++) {
+              for (let index = 0; index < 40; index++) {
                 crabTwo.position.x -= 0.00002;
                 blackKnight2.position.x -= 0.00002;
                 crabTwo.position.z += 0.00001;
