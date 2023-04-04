@@ -656,7 +656,7 @@ break
         socialDiv.addEventListener("click",function handleClick() {
 
 
-            const targetPosition = { x: -20, y: 3, z: -2 };
+            const targetPosition = { x: -13, y: 1, z: 0 };
 
             const startingPosition = {
                 x: this.camera.perspectiveCamera.position.x,
@@ -689,6 +689,9 @@ render();
         
             //This moves the tv xddd
         // this.room.scene.children[1].position.y = 10
+
+        const crabOne = this.room.scene.getObjectByName("CrabPlayerOne");
+        const crabTwo = this.room.scene.getObjectByName("CrabPlayerTwo");
 
         const bishopMesh = this.room.scene.getObjectByName("White_Bishop003_Cylinder011");
         const whiteQueen = this.room.scene.getObjectByName("chesspiece_queen_Cylinder013");
@@ -735,25 +738,330 @@ render();
         // blackKing.position.z = 0.79
 
 
-let count = 0;
+        // let count = 0;
+        // setInterval(() => {
+        // //   const remainder = count % 4;
+        // //   for (let index = 0; index < 100000; index++) {
+        // //     bishopMesh.position.z -= 0.00000001;
+        // //     crabOne.position.z -= 0.00000001;
+           
+        // //   }
+
+
+        // )
+
+
+        let timer = 0.1
+
+
+        async function runLoop() {
+            for (let index = 0; index < 140; index++) {
+              crabOne.position.z -= 0.00001;
+                
+              if (index > 40) {
+                whitePawn4.position.z -= 0.00001;
+
+              }
+              await new Promise(resolve => setTimeout(resolve, timer));
+            }
+            walkBack()
+          }
+
+          async function walkBack() {
+            for (let index = 0; index < 140; index++) {
+              crabOne.position.z += 0.00001;
+              await new Promise(resolve => setTimeout(resolve, timer));
+            }
+          }
+
+          async function walkTo(){
+            for (let index = 0; index < 160; index++) {
+                crabTwo.position.x += 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+          }
+          
+
+          async function walkBack2() {
+            for (let index = 0; index < 100; index++) {
+              crabTwo.position.z -= 0.00001;
+              await new Promise(resolve => setTimeout(resolve, timer));
+            }
+          }
+
+          async function runLoop2() {
+
+            await walkTo();
+
+            for (let index = 0; index < 100; index++) {
+            if (index < 100 ){
+            crabTwo.position.z += 0.00001;
+            }
+            
+            blackKnight2.position.z += 0.00001;
+              
+              
+              await new Promise(resolve => setTimeout(resolve, timer));
+            }
+
+
+            for (let index = 0; index < 50; index++) {
+                
+                crabTwo.position.x -= 0.00001;
+                
+        
+                blackKnight2.position.x -= 0.00001;
+                  
+                  
+                  await new Promise(resolve => setTimeout(resolve, timer));
+                }
+            walkBack2();
+
+           
+          }
+
+          async function walkTo2() {
+            for (let index = 0; index < 100; index++) {
+                crabOne.position.x -= 0.00001;
+              await new Promise(resolve => setTimeout(resolve, timer));
+            }
+          }
+
+          async function walkBack3() {
+            for (let index = 0; index < 50; index++) {
+              crabOne.position.z += 0.00001;
+              await new Promise(resolve => setTimeout(resolve,timer));
+            }
+          }
+
+          async function runLoop3() {
+
+            await walkTo2();
+
+            for (let index = 0; index < 50; index++) {
+              whiteKnight1.position.z -= 0.00001;
+              crabOne.position.z -= 0.00001;
+              await new Promise(resolve => setTimeout(resolve, timer));
+            }
+
+            for (let index = 0; index < 100; index++) {
+                whiteKnight1.position.x += 0.00001;
+                crabOne.position.x += 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+              await walkBack3();
+
+          }
+
+
+          
+
+          async function walkTo3() {
+            for (let index = 0; index < 50; index++) {
+                crabTwo.position.x -= 0.00001;
+              await new Promise(resolve => setTimeout(resolve, timer));
+            }
+          }
+
+          async function walkBack4() {
+            for (let index = 0; index < 140; index++) {
+              crabTwo.position.z -= 0.00001;
+              await new Promise(resolve => setTimeout(resolve, timer));
+            }
+          }
+
+
+          async function runLoop4() {
+
+            await walkTo3();
+
+            for (let index = 0; index < 140; index++) {
+                if (index>40){
+                blackPawn5.position.z += 0.00001;
+                }
+
+                crabTwo.position.z += 0.00001;
+                await new Promise(resolve => setTimeout(resolve,timer));
+            }
+            await walkBack4();
+          }
+
+
+          async function runLoop5() {
+
+            for (let index = 0; index < 140; index++) {
+                crabOne.position.z -= 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+
+              for (let index = 0; index < 50; index++) {
+                crabOne.position.z -= 0.00001;
+                crabOne.position.x += 0.00001;
+                whitePawn4.position.z -= 0.00001;
+                whitePawn4.position.x += 0.00001;
+
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+              blackPawn5.visible = false;
+              for (let index = 0; index < 190; index++) {
+                crabOne.position.z += 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+          }
+
+          async function runLoop6() {
+
+            for (let index = 0; index < 50; index++) {
+                crabTwo.position.x += 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+              for (let index = 0; index < 80; index++) {
+                crabTwo.position.z += 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+
+              for (let index = 0; index < 100; index++) {
+                blackKnight2.position.z += 0.00001;
+                crabTwo.position.z += 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+
+              for (let index = 0; index < 50; index++) {
+                crabTwo.position.x += 0.00001;
+                blackKnight2.position.x += 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+              for (let index = 0; index < 180; index++) {
+                crabTwo.position.z -= 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+
+
+          }
+
+
+          async function runLoop7() {
+            for (let index = 0; index < 150; index++) {
+                crabOne.position.x += 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+
+              for (let index = 0; index < 70; index++) {
+                crabOne.position.z -= 0.00001;
+                if (index >20) {
+                    whitePawn8.position.z -= 0.00001;
+                } 
+
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+
+              for (let index = 0; index < 70; index++) {
+                crabOne.position.z += 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+
+
+
+          }
+
+
+          async function runLoop8() {
+
+            for (let index = 0; index < 50; index++) {
+                crabTwo.position.x += 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+              for (let index = 0; index < 80; index++) {
+                crabTwo.position.z += 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+
+              for (let index = 0; index < 100; index++) {
+                crabTwo.position.z += 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+
+              for (let index = 0; index < 50; index++) {
+                crabTwo.position.x -= 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+
+              for (let index = 0; index < 50; index++) {
+                crabTwo.position.x -= 0.00002;
+                blackKnight2.position.x -= 0.00002;
+                crabTwo.position.z += 0.00001;
+                blackKnight2.position.z += 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+              for (let index = 0; index < 50; index++) {
+                crabTwo.position.z -= 0.00001;
+                crabTwo.position.x -= 0.00001;
+                await new Promise(resolve => setTimeout(resolve, timer));
+              }
+
+
+
+          }
+
+
+        let count = 0;
 setInterval(() => {
-  const remainder = count % 4;
-  switch (remainder) {
+//   const remainder = count % 4;
+// switch (remainder) {
+
+  switch (count) {
     case 0:
-        bishopMesh.position.z += -0.002;
+        runLoop()
+        
       break;
     case 1:
-        bishopMesh.position.x += -0.002;
+        runLoop2()
       break;
     case 2:
-        bishopMesh.position.z += +0.002;
+        runLoop3()
       break;
     case 3:
-        bishopMesh.position.x += 0.002;
+        runLoop4()
       break;
+    case 4:
+        runLoop5()
+    break;
+    case 5:
+        runLoop6()
+    break;
+    case 6:
+        runLoop7()
+        break;
+    case 7:
+        runLoop8()
+        break;
   }
   count += 1;
 }, 10000); // 10000 milliseconds = 10 seconds
+
+
+       
+          
+        
+
+
+
 
         
 
