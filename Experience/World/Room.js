@@ -44,10 +44,10 @@ export default class Room {
         this.project44.wrapS = THREE.RepeatWrapping;
         this.project44.repeat.x = -1;
 
-        this.setAnimation();
+       
             this.setLogic()
             this.setModel();
-
+            this.setAnimation();
     }
 
 
@@ -1103,11 +1103,23 @@ setInterval(() => {
         this.mixer = new THREE.AnimationMixer(this.actualRoom);
 
         // console.log(this.mixer);
+
+        this.room.animations.forEach((item, index) => {
+            const objectName = item.name;
+            if (
+                objectName == "dragon_armature.001Action"
+              ||   objectName == "Action.001"  ||   objectName == "Action.002" 
+              ||   objectName == "Action.003" 
+            ) {
+              this.swim = this.mixer.clipAction(item);
+              this.swim.play();
+            }
+          });
       
-        // this.room.animations.forEach((item, index) => {
-        //   this.swim = this.mixer.clipAction(this.room.animations[index]);
-        //   this.swim.play();
-        // });
+
+       
+          
+          
     }
 
 
