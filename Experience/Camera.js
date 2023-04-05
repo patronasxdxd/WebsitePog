@@ -39,12 +39,9 @@ export default class Camera{
 
 
         this.scene.add(this.perspectiveCamera);
-                     this.perspectiveCamera.position.x = -15;
+                     this.perspectiveCamera.position.x = -10;
                     this.perspectiveCamera.position.y = 5;
-                    this.perspectiveCamera.position.z = -25;
-
-
-        
+                    this.perspectiveCamera.position.z = 36;
     }
 
     
@@ -53,12 +50,12 @@ export default class Camera{
         this.controls = new OrbitControls(this.perspectiveCamera, this.canvas);
         this.controls.enableDamping = true;
         this.controls.enableZoom = true;
-        
+        this.controls.minDistance = 10; // Set minimum 
+        this.controls.maxDistance = 55; // Set maximum 
     }
 
 
     createOrthographicCamera() {
-        // this.frustrum = 5;
         this.orthographicCamera = new THREE.OrthographicCamera(
             (-this.sizes.aspect * this.sizes.frustrum) / 2,
             (this.sizes.aspect * this.sizes.frustrum) / 2,
@@ -97,8 +94,9 @@ export default class Camera{
     }
     
     update() {
-        this.perspectiveCamera.position.y = Math.max(this.perspectiveCamera.position.y, 0); 
         this.controls.update();
+
+        this.perspectiveCamera.position.y = Math.max(this.perspectiveCamera.position.y, 0); 
         this.resize();    
     }
 }
