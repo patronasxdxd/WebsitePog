@@ -46,14 +46,11 @@ export default class Experience{
 
    
     update(){
-        // console.log("uyes");
-        // requestAnimationFrame(this.render.bind(this));
-    // requestAnimationFrame(this.render.bind(this));
-
+    
         this.camera.update();
         this.world.update();
         this.renderer.update();
-        // this.room.update();
+      
         if (this.controls) {
             this.controls.update();
         }

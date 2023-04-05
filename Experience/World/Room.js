@@ -28,21 +28,21 @@ export default class Room {
         console.log(this.experience,"dawdw")
         // this.roomChildren = {};
         this.textureSocial = new THREE.TextureLoader().load('/textures/phonebg.webp');
-        this.projectMenu = new THREE.TextureLoader().load('/textures/project1.png');
-        this.projectMenu.wrapS = THREE.RepeatWrapping;
-        this.projectMenu.repeat.x = -1;
-        this.project11 = new THREE.TextureLoader().load('/textures/project2.png');
-        this.project11.wrapS = THREE.RepeatWrapping;
-        this.project11.repeat.x = -1;
-        this.project22 = new THREE.TextureLoader().load('/textures/project3.png');
-        this.project22.wrapS = THREE.RepeatWrapping;
-        this.project22.repeat.x = -1;
-        this.project33 = new THREE.TextureLoader().load('/textures/project4.png');
-        this.project33.wrapS = THREE.RepeatWrapping;
-        this.project33.repeat.x = -1;
-        this.project44 = new THREE.TextureLoader().load('/textures/project5.png');
-        this.project44.wrapS = THREE.RepeatWrapping;
-        this.project44.repeat.x = -1;
+        // this.projectMenu = new THREE.TextureLoader().load('/textures/project1.png');
+        // this.projectMenu.wrapS = THREE.RepeatWrapping;
+        // this.projectMenu.repeat.x = -1;
+        // this.project11 = new THREE.TextureLoader().load('/textures/project2.png');
+        // this.project11.wrapS = THREE.RepeatWrapping;
+        // this.project11.repeat.x = -1;
+        // this.project22 = new THREE.TextureLoader().load('/textures/project3.png');
+        // this.project22.wrapS = THREE.RepeatWrapping;
+        // this.project22.repeat.x = -1;
+        // this.project33 = new THREE.TextureLoader().load('/textures/project4.png');
+        // this.project33.wrapS = THREE.RepeatWrapping;
+        // this.project33.repeat.x = -1;
+        // this.project44 = new THREE.TextureLoader().load('/textures/project5.png');
+        // this.project44.wrapS = THREE.RepeatWrapping;
+        // this.project44.repeat.x = -1;
             this.setLogic()
             this.setModel();
             this.setAnimation();
@@ -108,21 +108,21 @@ export default class Room {
         this.objectsToTest = [
 
 
-            this.projectsHitBox,
-            this.socialsHitBox,
-            this.skillsHitBox,
-            this.mediabuttonsHitBoxes,
-            this.project1,
-            this.project2,  
-            this.project3,
-            this.project4,
-            this.project5,
-            this.media1,
-            this.media2,
-            this.media3,
-            this.media4,
-            this.media5,
-            this.media6,
+            // this.projectsHitBox,
+            // this.socialsHitBox,
+            // this.skillsHitBox,
+            // this.mediabuttonsHitBoxes,
+            // this.project1,
+            // this.project2,  
+            // this.project3,
+            // this.project4,
+            // this.project5,
+            // this.media1,
+            // this.media2,
+            // this.media3,
+            // this.media4,
+            // this.media5,
+            // this.media6,
             
         ]
         
@@ -136,173 +136,12 @@ export default class Room {
 
         if(this.intersectsObjects.length)
         {
-            console.log("DawDWADADW");
-            this.selectedModel = this.intersectsObjects[ 0 ].object
-
+          
             switch (this.selectedModel){
-                case this.project1: 
-                console.log("working1")
-                this.actualRoom.children.forEach((child) => {
-    
-                    if (child.name === "Computer") {
-                        child.children[1].material = new THREE.MeshBasicMaterial({
-                            map: this.project11
-                        });
-                    }})
-                break
-                case this.project2: 
-                console.log("working2")
-                this.actualRoom.children.forEach((child) => {
-    
-                    if (child.name === "Computer") {
-                        child.children[1].material = new THREE.MeshBasicMaterial({
-                            map: this.project22
-                        });
-                    }})
 
-
-                break
-                case this.project3: 
-                this.actualRoom.children.forEach((child) => {
-    
-                    if (child.name === "Computer") {
-                        child.children[1].material = new THREE.MeshBasicMaterial({
-                            map: this.project33
-                        });
-                    }})
-                console.log("working3")
-                break
-                case this.project4: 
-                this.actualRoom.children.forEach((child) => {
-    
-                    if (child.name === "Computer") {
-                        child.children[1].material = new THREE.MeshBasicMaterial({
-                            map: this.project44
-                        });
-                    }})
-                console.log("working4")
-                break
-
-                case this.project5: console.log("working5")
-                this.actualRoom.children.forEach((child) => {
-    
-                    if (child.name === "Computer") {
-                        child.children[1].material = new THREE.MeshBasicMaterial({
-                            map: this.projectMenu
-                        });
-                    }})
-                // his.projectsHitBox,this.socialsHitBox)
-                break
-              
-                case this.projectsHitBox:
-                    console.log("porject911")
-                    
             
-
-
-            const targetPosition = { x: -1, y: 3, z: 10 };
-            const startingPosition = {
-                x: camera.perspectiveCamera.position.x,
-                y: camera.perspectiveCamera.position.y,
-                z: camera.perspectiveCamera.position.z
-              };
-        //     this.experience.camera.perspectiveCamera.position.z = 10;
-        //  this.experience.camera.perspectiveCamera.position.y = 3;
-        //  this.experience.camera.perspectiveCamera.position.x = -1;  
-        const tween = new TWEEN.Tween(startingPosition)
-         .to(targetPosition, 2000) // 2000 milliseconds duration
-        .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
-         .onUpdate(() => {
-    // Update the camera position on every frame of the animation
-         camera.perspectiveCamera.position.set(
-         startingPosition.x,
-        startingPosition.y,
-        startingPosition.z
-    );
-  })
-  .start(); // Start the animation
-
-// Call TWEEN.update() on every frame of your render loop to update the Tween
-function render() {
-  requestAnimationFrame(render);
-  TWEEN.update();
-  // Render your Three.js scene here
-}
-render();
-break
-
-                case this.socialsHitBox:
-                   
-    
-                  
-                const targetPositionSocial = { x: 7, y: 2, z: 0 };
-    
-    
-    
-    
-                const startingPosition2 = {
-                    x: this.camera.perspectiveCamera.position.x,
-                    y: this.camera.perspectiveCamera.position.y,
-                    z: this.camera.perspectiveCamera.position.z
-                  };
-            //     this.experience.camera.perspectiveCamera.position.z = 10;
-            //  this.experience.camera.perspectiveCamera.position.y = 3;
-            //  this.experience.camera.perspectiveCamera.position.x = -1;  
-            const tween2 = new TWEEN.Tween(startingPosition2)
-             .to(targetPositionSocial, 2000) // 2000 milliseconds duration
-            .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
-             .onUpdate(() => {
-        // Update the camera position on every frame of the animation
-             this.camera.perspectiveCamera.position.set(
-            startingPosition2.x,
-            startingPosition2.y,
-            startingPosition2.z
-        );
-      })
-      .start(); // Start the animation
-    
-    // Call TWEEN.update() on every frame of your render loop to update the Tween
- 
-    render();
-            
-              
-                    break
-                    case this.skillsHitBox:
-
-                        
-                            const targetPositionSocial3 = { x: 10, y: 16, z: -5 };
-                        
-                            const startingPosition3 = {
-                                x: this.camera.perspectiveCamera.position.x,
-                                y: this.camera.perspectiveCamera.position.y,
-                                z: this.camera.perspectiveCamera.position.z
-                              };
-                      
-                        const tween3 = new TWEEN.Tween(startingPosition3)
-                         .to(targetPositionSocial3, 2000) // 2000 milliseconds duration
-                        .easing(TWEEN.Easing.Quadratic.InOut) // Use a quadratic easing function
-                         .onUpdate(() => {
-                    
-                    
-                    // Update the camera position on every frame of the animation
-                         this.camera.perspectiveCamera.position.set(
-                        startingPosition3.x,
-                        startingPosition3.y,
-                        startingPosition3.z
-                    );
-                    })
-                    .start(); // Start the animation
-                    
-                    // Call TWEEN.update() on every frame of your render loop to update the Tween
-                    
-                    render();
-                    // console.log()
-                    
-
-
-
-                    break;
-                    case this.media1: console.log("camera")
+                    case 
+                    this.media1: console.log("camera")
 
                     break;
                     case this.media2: console.log("insta")
@@ -333,9 +172,6 @@ break
                     
 
                     break;
-
-
-
             }
     
         
@@ -390,115 +226,7 @@ break
 
         
                
-            
-
-        //hitbox for pole 
-        this.projectsHitBox = new THREE.Mesh(
-          
-            new THREE.BoxGeometry(1.285,0.286,0,65),
-            this.hitBoxMaterial
-        )
-
-        this.projectsHitBox.position.set(1.9,1.9,-3.6)
-
-        this.skillsHitBox = new THREE.Mesh(
-          
-            new THREE.BoxGeometry(0.7,0.31,0,65),
-            this.hitBoxMaterial
-        )
-
-        this.skillsHitBox.position.set(2.3,1.35,-3.6)
-
-
-        this.socialsHitBox = new THREE.Mesh(
-          
-            new THREE.BoxGeometry(0.7,0.31,0,65),
-            this.hitBoxMaterial
-        )
-
-        this.socialsHitBox.position.set(2.4,0.72,-3.6)
-
-
-        this.signHitBoxes.add(this.projectsHitBox,this.skillsHitBox,this.socialsHitBox)
-        this.signHitBoxes.visible = true
-        this.scene.add(this.signHitBoxes);
-
-
-        this.projectHitBoxes = new THREE.Group()
-        this.projectHitBoxGeometry = new THREE.PlaneGeometry( 0.35, 0.235 )
-
-        this.project1 = new THREE.Mesh(
-            this.projectHitBoxGeometry,
-            this.hitBoxMaterial
-        )
-        this.project1.position.set(1.7,2.32,3.41)
-
-        this.project2 = new THREE.Mesh(
-            this.projectHitBoxGeometry,
-            this.hitBoxMaterial
-        )
-        this.project2.position.set(1.7,2.00,3.41)
-
-
-        this.project3 = new THREE.Mesh(
-            this.projectHitBoxGeometry,
-            this.hitBoxMaterial
-        )
-        this.project3.position.set(1.7,1.70,3.41)
-
-        this.project4 = new THREE.Mesh(
-            this.projectHitBoxGeometry,
-            this.hitBoxMaterial
-        )
-        this.project4.position.set(1.7,1.40,3.41)
-
-        this.project5 = new THREE.Mesh(
-            this.projectHitBoxGeometry,
-            this.hitBoxMaterial
-        )
-        this.project5.position.set(1.7,1.10,3.41)
-
-      
-    
-        this.projectHitBoxes.add(this.project1, this.project2, this.project3, this.project4, this.project5)
-        this.projectHitBoxes.visible = true
-
-
-        this.scene.add(this.projectHitBoxes);
-
-        this.aboutMeBoxes = new THREE.Group()
-
-
-        this.aboutMeHitBoxGeometry = new THREE.PlaneGeometry( 0.3, 0.2 )
-
-        this.aboutMeBack = new THREE.Mesh(
-            new THREE.PlaneGeometry( 0.3, 0.2 ),
-            this.hitBoxMaterial
-        )
-        this.aboutMeBack.position.set(0.12, 4.58, 0.58)
-
-        this.aboutMeScreens = new THREE.Mesh(
-            this.aboutMeHitBoxGeometry,
-            this.hitBoxMaterial
-        )
-        this.aboutMeScreens.position.set(0.45, 4.58, 0.58)
-
-        this.skills = new THREE.Mesh(
-            this.aboutMeHitBoxGeometry,
-            this.hitBoxMaterial
-        )
-        this.skills.position.set(0.78, 4.58, 0.58)
-
-        this.experience = new THREE.Mesh(
-            new THREE.PlaneGeometry( 0.45, 0.2 ),
-            this.hitBoxMaterial
-        )
-        this.experience.position.set(1.15, 4.58, 0.58)
         
-
-        this.aboutMeBoxes.add(this.aboutMeBack, this.aboutMeScreens, this.skills, this.experience)
-        this.aboutMeBoxes.visible = true
-
 
         this.mediabuttonsHitBoxes = new THREE.Group()
         this.projectHitBoxGeometry2 = new THREE.PlaneGeometry( 0.37, 0.335 )
@@ -559,7 +287,7 @@ break
 
 
         this.mediabuttonsHitBoxes.add(this.media1,this.media2,this.media3,this.media4,this.media5,this.media6)
-        this.mediabuttonsHitBoxes.visible = true
+        // this.mediabuttonsHitBoxes.visible = true
 
         
 
@@ -865,7 +593,7 @@ render();
 
 
      
-        let timer = 0.01
+        let timer = 0.1
 
 
         async function runLoop() {
