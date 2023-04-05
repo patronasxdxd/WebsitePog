@@ -11,42 +11,29 @@ export default class Sizes extends EventEmitter{
        this.experience = new Experience();
        this.renderer = this.experience.renderer;
        this.assets = assets;
-    //    this.rendererxd = this.experience.renderer.instance
-    //    console.log(this.experience.renderer,'dwadaw');
        this.items = {}
        this.queue = this.assets.length;
        this.loaded = 0;
 
        this.setLoaders();
        this.startLoading();
+
    }
 
 
    setLoaders() {
 
-    const loadingBar = document.getElementById('loading-bar');
+    const progresbar = document.getElementById('progress-bar');
     const Loadingmanagerr = new THREE.LoadingManager();
-    
-    function updateLoadingBar(progress) {
-      const barElement = loadingBar.querySelector('.bar');
-      const growingBarElement = loadingBar.querySelector('.growing-bar');
-    
-      barElement.classList.remove('bar-0', 'bar-10', 'bar-20', 'bar-30', 'bar-40', 'bar-50', 'bar-60', 'bar-70', 'bar-80', 'bar-90', 'bar-100');
-      growingBarElement.style.width = `${progress}%`;
-      barElement.classList.add(`bar-${Math.floor(progress / 10) * 10}`);
+    Loadingmanagerr.onProgress = function(url,loaded,total){
+        progresbar.value = (loaded / total) * 100;
     }
-    
-    Loadingmanagerr.onProgress = function(url, loaded, total) {
-      const progress = (loaded / total) * 100;
-      updateLoadingBar(progress);
+    const progresbarContainer = document.querySelector('.progress-bar-container')
+
+    Loadingmanagerr.onLoad = function(){
+        progresbarContainer.style.display = 'none';
     }
-    
-    const progressBarContainer = document.querySelector('.progress-bar-container');
-    
-    Loadingmanagerr.onLoad = function() {
-      document.getElementById('preLoad').style.display = 'none';
-    }
-    
+
 
 
     this.loaders = {};
