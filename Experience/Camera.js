@@ -27,17 +27,8 @@ export default class Camera{
             1000
         );
 
-        // this.perspectiveCamera = new THREE.PerspectiveCamera(
-        //     75, // Field of view
-        //     window.innerWidth / window.innerHeight, // Aspect ratio
-        //     0.1, // Near plane
-        //     1000 // Far plane
-        //   );
-          
-        
-
-
-
+    
+    
         this.scene.add(this.perspectiveCamera);
                      this.perspectiveCamera.position.x = -10;
                     this.perspectiveCamera.position.y = 5;

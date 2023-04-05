@@ -22,13 +22,20 @@ export default class Sizes extends EventEmitter{
 
 
    setLoaders() {
-
+    const percentage = document.querySelector('#progress-percentage');
     const progresbar = document.getElementById('progress-bar');
     const Loadingmanagerr = new THREE.LoadingManager();
+
+
     Loadingmanagerr.onProgress = function(url,loaded,total){
+
         progresbar.value = (loaded / total) * 100;
+        percentage.textContent = `${Math.floor(progresbar.value)}%`;
+
     }
+
     const progresbarContainer = document.querySelector('.progress-bar-container')
+
 
     Loadingmanagerr.onLoad = function(){
         progresbarContainer.style.display = 'none';
